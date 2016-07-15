@@ -62,19 +62,20 @@
 					</h4>
 				</td>
 			</tr>
-            <volist name="arr" id="arr">
+            @foreach($arr as $val)
                 <tr class="control-group">
                     <td class="rule-kw">
                         <div>
-                            <b>关键字：　</b><span></span>
+                            <b>关键字：　</b><span>{{$val->r_key}}</span>
                         </div>
                         <div>
-                            <b>回　复：　</b><span>
-                        </span>
+                            <b>回　复：　</b><span>{{$val->r_content}}</span>
+
                         </div>
                     </td>
                 </tr>
-            </volist>
+            @endforeach
+
 
 		</table>
 

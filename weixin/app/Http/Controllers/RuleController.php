@@ -11,6 +11,7 @@ class RuleController extends Controller{
    public function index(){
        $p_id=Session::get('p_id');
        $arr=DB::table('we_rule')->where('p_id',$p_id)->get();
+       //print_r($arr);
        return view('admin/rule/display',['arr'=>$arr]);
    }
     //添加规则
