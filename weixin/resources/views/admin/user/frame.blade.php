@@ -27,8 +27,7 @@
                             $p_id=Session::get('p_id');
                             if($p_id){
                                 //echo $p_id;
-                                $row= DB::table('we_pub')->where('p_id',$p_id)->lists('p_name');
-                                $p_name=$row[0];
+                                $p_name= DB::table('we_pub')->where('p_id',$p_id)->pluck('p_name');
                             }else{
 
                             }
@@ -40,6 +39,10 @@
                             @else
                                 <span id="current-account">请切换公众号</span>
                             @endif
+
+
+
+
 
                             {{--<span id="current-account">请切换公众号</span>--}}
 

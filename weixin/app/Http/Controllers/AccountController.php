@@ -35,6 +35,7 @@ class AccountController extends Controller
         $account=Request::input('account');
         //原始帐号
         $original=Request::input('original');
+        $server_name=$_SERVER['SERVER_NAME'];
         //
 //        $url="localhost".Request::getRequestUri();
 //        echo $url;
@@ -44,7 +45,7 @@ class AccountController extends Controller
         $token1=base64_encode($data);
         $token=substr($token1,1,-2);
         $p_rand=substr($token1,1,-4);
-        $url="http://localhost/weixin/public/checkSignature?do=$p_rand";
+        $url="http://$server_name/weixin/public/checkSignature?do=$p_rand";
         $address=str_replace('%2F','/',$url);
 //        $address=$host.$url."/".$p_rand.".html";
         $arr=new We_pub();
@@ -84,6 +85,7 @@ class AccountController extends Controller
     //验证服务器地址的有效性
     public function checkSignature(){
         $do=$_GET['do'];
+        echo $do;
         $arr=new We_pub();
         if(isset($_GET["echostr"])) {
             $echoStr=$_GET["echostr"];
