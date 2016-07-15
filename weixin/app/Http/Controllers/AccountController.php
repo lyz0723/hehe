@@ -45,7 +45,7 @@ class AccountController extends Controller
         $token1=base64_encode($data);
         $token=substr($token1,1,-2);
         $p_rand=substr($token1,1,-4);
-        $url="http://$server_name/hehe/weixin/public/checkSignature?do=$p_rand";
+        $url=substr('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'?'))."?do=$p_rand";
         $address=str_replace('%2F','/',$url);
 //        $address=$host.$url."/".$p_rand.".html";
         $arr=new We_pub();
@@ -84,7 +84,6 @@ class AccountController extends Controller
     }
     //验证服务器地址的有效性
     public function checkSignature(){
-
         $do=$_GET['do'];
         $arr=new We_pub();
         $token=$arr->api($do);
