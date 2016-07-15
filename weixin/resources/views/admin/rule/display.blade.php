@@ -62,17 +62,20 @@
 					</h4>
 				</td>
 			</tr>
-			<tr class="control-group">
-				<td class="rule-kw">
-					<div>
-                        <b>关键字：　</b><span></span>
-					</div>
-                    <div>
-                        <b>回　复：　</b><span>
+            <volist name="arr" id="arr">
+                <tr class="control-group">
+                    <td class="rule-kw">
+                        <div>
+                            <b>关键字：　</b><span></span>
+                        </div>
+                        <div>
+                            <b>回　复：　</b><span>
                         </span>
-                    </div>
-				</td>
-			</tr>
+                        </div>
+                    </td>
+                </tr>
+            </volist>
+
 		</table>
 
 	</div>

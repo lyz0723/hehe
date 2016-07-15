@@ -9,7 +9,9 @@ use Input,Response;
 class RuleController extends Controller{
     //文字回复页面和音乐回复页面
    public function index(){
-       return view('admin/rule/display');
+       $p_id=Session::get('p_id');
+       $arr=DB::table('we_rule')->where('p_id',$p_id)->get();
+       return view('admin/rule/display',['arr'=>$arr]);
    }
     //添加规则
     public function add_rule(){
@@ -29,6 +31,7 @@ class RuleController extends Controller{
         //实例化对象
         $arr=new We_rule();
         $arr->add($name,$type,$content,$key);
+        return redirect('rule');
     }
 
 }
