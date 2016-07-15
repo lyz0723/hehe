@@ -46,10 +46,9 @@ class AccountController extends Controller
         $token=substr($token1,1,-2);
         $p_rand=substr($token1,1,-4);
         $url=substr('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'?'))."?do=$p_rand";
-        $address=str_replace('%2F','/',$url);
 //        $address=$host.$url."/".$p_rand.".html";
         $arr=new We_pub();
-        $arr->add($name,$address,$key,$secret,$original,$account,$token,$p_rand);
+        $arr->add($name,$url,$key,$secret,$original,$account,$token,$p_rand);
         return redirect('display');
 
     }
