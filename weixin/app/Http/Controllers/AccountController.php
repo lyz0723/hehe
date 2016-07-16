@@ -35,7 +35,6 @@ class AccountController extends Controller
         $account=Request::input('account');
         //原始帐号
         $original=Request::input('original');
-        $server_name=$_SERVER['SERVER_NAME'];
         //
 //        $url="localhost".Request::getRequestUri();
 //        echo $url;
@@ -45,12 +44,13 @@ class AccountController extends Controller
         $token1=base64_encode($data);
         $token=substr($token1,1,-2);
         $p_rand=substr($token1,1,-4);
-        $url=substr('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'?'))."?do=$p_rand";
+//        $url=substr('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,
+//                strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'?'))."?do=$p_rand";$p_rand;
+        $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?do=$p_rand";
 //        $address=$host.$url."/".$p_rand.".html";
         $arr=new We_pub();
         $arr->add($name,$url,$key,$secret,$original,$account,$token,$p_rand);
         return redirect('display');
-
     }
     //切换公众号显示公众号的用户名
     public function nav()
