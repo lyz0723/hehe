@@ -27,7 +27,7 @@ Route::get('display','AccountController@display');
 //添加公众号页面
 Route::get('post','AccountController@post');
 //添加公众号
-Route::post('add','AccountController@add');
+Route::any('add','AccountController@add');
 //切换公众号显示公众号的用户名
 Route::get('nav','AccountController@nav');
 //点击公众号用户名替换
