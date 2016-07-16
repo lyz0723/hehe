@@ -24,7 +24,7 @@ class We_pub extends Model{
     }
     //根据p_rand字段获取token
     public function api($do){
-        $arr=DB::table('We_pub')->where('p_rand',$do)->first();
+        $arr=DB::table('we_pub')->where('p_rand','=',$do)->first();
         return $arr->token;
     }
     public function responseMsg()
