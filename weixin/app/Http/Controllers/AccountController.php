@@ -84,6 +84,7 @@ class AccountController extends Controller
     //验证服务器地址的有效性
     public function checkSignature(){
         $do=$_GET['do'];
+        //echo $do;die;
         $arr=new We_pub();
         $token=$arr->api($do);
         include"wx_sample.php";
