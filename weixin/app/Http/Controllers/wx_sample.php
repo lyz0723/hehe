@@ -2,7 +2,6 @@
 /**
   * wechat php test
   */
-echo 0;
 //define your token
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
@@ -16,6 +15,7 @@ class wechatCallbackapiTest
 
         //valid signature , option
         if($this->checkSignature()){
+            header('content-type:text');
         	echo $echoStr;
         	exit;
         }
