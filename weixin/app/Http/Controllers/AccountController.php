@@ -44,8 +44,13 @@ class AccountController extends Controller
         $token1=base64_encode($data);
         $token=substr($token1,1,-2);
         $p_rand=substr($token1,1,-4);
+       // print_r($_SERVER);die;
+        $str=$_SERVER['SCRIPT_NAME'];
+        $a=strrpos($str,'/');
+      $c=substr($str,0,$a+1);
         //$url=substr('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'?'))."?do=$p_rand";$p_rand;
-        $url=$_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']."/checkSignature?do=$p_rand";
+        $url="http://".$_SERVER['HTTP_HOST'].$c."checkSignature?do=$p_rand";
+        echo $url;die;
         $arr=new We_pub();
         $arr->add($name,$url,$key,$secret,$original,$account,$token,$p_rand);
         return redirect('display');
