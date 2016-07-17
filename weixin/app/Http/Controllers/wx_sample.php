@@ -54,6 +54,9 @@ class wechatCallbackapiTest
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     echo $resultStr;
                 }else{
+                    /*
+                     * 接入图灵机器人
+                     * */
                     //定义回复类型
                     $msgType="text";
                     //定义URL链接操作
@@ -63,9 +66,12 @@ class wechatCallbackapiTest
                     //定义回复内容
                     $contentStr=$json->text;
                     //格式化字符串
-                    $result=sprintf($textTpl,$fromUsername,$toUsername, $contentStr, $time);
+                    $result=sprintf($textTpl,$fromUsername,$toUsername, $contentStr, $time,$msgType);
                     //返回数据给客户端
                     echo $result;
+                    /*
+                     * end 图灵机器人结束
+                     * */
                 }
 
                 }else{
