@@ -51,7 +51,7 @@ class wechatCallbackapiTest
                 {
                     if($keyword=="文本"){
                         $msgType = "text";
-                        $contentStr = "Welcome to wechat world!";
+                        $contentStr = "已收到文本消息";
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }
