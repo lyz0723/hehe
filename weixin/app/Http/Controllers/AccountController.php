@@ -88,13 +88,8 @@ class AccountController extends Controller
     public function checkSignature(){
         $do=$_GET['do'];
         $arr=new We_pub();
-        if(isset($_GET["echostr"])){
-            $token=$arr->api($do);
-            include"wx_sample.php";
-        }
-        else{
-            $arr->responseMsg();
-        }
+        $token=$arr->api($do);
+        include"wx_sample.php";
 //        echo $do;die;
 //        $arr=new We_pub();
 //        if(isset($_GET["echostr"])) {
