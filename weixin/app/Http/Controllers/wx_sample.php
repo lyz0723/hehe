@@ -58,11 +58,11 @@ class wechatCallbackapiTest
                      * 接入图灵机器人
                      * */
                     //定义回复类型
-                    include"curl.php";
+                    //include"curl.php";
                     $msgType="text";
                     //定义URL链接操作
                     $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info={$keyword}";
-                    $str=curl($url,$keyword,"POST");
+                    $str=file_get_contents($url);
                     $json=json_decode($str);
                     //定义回复内容类型
                     $contentStr=$json->text;
