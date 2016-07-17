@@ -48,19 +48,38 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-            if(!empty( $keyword ))
-            {
-                $msgType = "text";
-                $contentStr = "Welcome to wechat world!";
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-            }else{
-                echo "Input something...";
-            }
-        }else {
-            echo "";
-            exit;
-        }
+				if(!empty( $keyword )) {
+                    $msgType = "text";
+                    $contentStr = "Welcome to wechat world!";
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    echo $resultStr;
+                }else{
+                    /*
+                     * 接入图灵机器人
+                     * */
+                    //定义回复类型
+                    include"curl.php";
+                    $msgType="text";
+                    //定义URL链接操作
+                    $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info={$keyword}";
+                    $str=curl($url,$keyword,"POST");
+                    $json=json_decode($str);
+                    //定义回复内容类型
+                    $contentStr=$json->text;
+                    //格式化字符串
+                    $result=sprintf($textTpl,$fromUsername,$toUsername, $contentStr, $time,$msgType);
+                    //返回数据给客户端
+                    echo $result;
+                    /*
+                     * end 图灵机器人结束
+                     * */
+                }
+                }else{
+                    echo "Input something...";
+                }
+
+
+
     }
 		
 	private function checkSignature()
