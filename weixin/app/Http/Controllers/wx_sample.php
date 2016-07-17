@@ -5,8 +5,8 @@
 //define your token
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
-
+//$wechatObj->valid();
+//开启自动回复功能
  $wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
@@ -38,7 +38,6 @@ class wechatCallbackapiTest
             $keyword = trim($postObj->Content);
             $msgType=$postObj->MsgType;
             $time = time();
-
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
 							<FromUserName><![CDATA[%s]]></FromUserName>
@@ -58,7 +57,6 @@ class wechatCallbackapiTest
                         echo "Input something...";
                     }
                 }
-
             }
 
         }else {
