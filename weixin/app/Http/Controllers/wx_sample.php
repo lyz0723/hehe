@@ -5,8 +5,8 @@
 //define your token
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
-//$wechatObj->valid();
-echo $wechatObj->responseMsg();
+$wechatObj->valid();
+//echo $wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
 	public function valid()
@@ -55,7 +55,7 @@ class wechatCallbackapiTest
                         $contentStr = "Welcome to wechat world!";
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                  
+
                 }else{
                     echo "Input something...";
                 }
