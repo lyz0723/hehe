@@ -49,7 +49,7 @@ class AccountController extends Controller
         $a=strrpos($str,'/');
       $c=substr($str,0,$a+1);
         //$url=substr('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'?'))."?do=$p_rand";$p_rand;
-        $url="http://".$_SERVER['HTTP_HOST'].$c."checkSignature?do=$p_rand";
+        $url="http://".$_SERVER['HTTP_HOST'].$c."checkSignatures?do=$p_rand";
         //echo $url;die;
         $arr=new We_pub();
         $arr->add($name,$url,$key,$secret,$original,$account,$token,$p_rand);
@@ -85,7 +85,7 @@ class AccountController extends Controller
         return redirect('display');
     }
     //验证服务器地址的有效性
-    public function checkSignature(){
+    public function checkSignatures(){
         $do=$_GET['do'];
         $arr=new We_pub();
         $token=$arr->api($do);

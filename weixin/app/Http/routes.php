@@ -46,4 +46,4 @@ Route::get('del','AccountController@del');
 //文字回复提交
 Route::post('add_text','RuleController@add_text');
 //验证服务器地址的有效性
-Route::get('checkSignature','AccountController@checkSignature');
+Route::get('checkSignatures','AccountController@checkSignatures');
