@@ -29,9 +29,9 @@ class We_pub extends Model{
     }
     public function responseMsg()
     {
-        //$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
         if (!empty($postStr)) {
-            libxml_disable_entity_loader(true);
+            //libxml_disable_entity_loader(true);
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
@@ -43,7 +43,6 @@ class We_pub extends Model{
 							<CreateTime>%s</CreateTime>
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
-							<FuncFlag>0</FuncFlag>
 							</xml>";
             if(!empty( $keyword ))
             {
