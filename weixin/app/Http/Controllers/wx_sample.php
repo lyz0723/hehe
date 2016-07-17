@@ -7,7 +7,7 @@ define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 //开启自动回复功能
- $wechatObj->responseMsg();
+echo $wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
 	public function valid()
