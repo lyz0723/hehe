@@ -45,7 +45,8 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							</xml>";
-            if($msgType=="text"){
+            if($msgType=='text'){
+
                 if(!empty( $keyword ))
                 {
                     if($keyword=="文本"){
@@ -53,12 +54,11 @@ class wechatCallbackapiTest
                         $contentStr = "Welcome to wechat world!";
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }else{
-                        echo "Input something...";
                     }
+                }else{
+                    echo "Input something...";
                 }
             }
-
         }else {
             echo "";
             exit;
