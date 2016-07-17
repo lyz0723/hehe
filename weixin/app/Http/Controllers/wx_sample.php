@@ -7,7 +7,7 @@ define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 
-// $wechatObj->responseMsg();
+ $wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
 	public function valid()
@@ -17,7 +17,7 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             header('content-type:text');
         	echo $echoStr;
-            $this->responseMsg();
+            //$this->responseMsg();
         	exit;
         }
     }
@@ -36,8 +36,9 @@ class wechatCallbackapiTest
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
+            $msgType=$postObj->MsgType;
             $time = time();
-            if($postObj->MsgType=='text'){
+
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
 							<FromUserName><![CDATA[%s]]></FromUserName>
@@ -45,16 +46,21 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							</xml>";
+            if($msgType=="text"){
                 if(!empty( $keyword ))
                 {
-                    $msgType = "text";
-                    $contentStr = "Welcome to wechat world!";
-                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    echo $resultStr;
-                }else{
-                    echo "Input something...";
+                    if($keyword=="文本"){
+                        $msgType = "text";
+                        $contentStr = "Welcome to wechat world!";
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        echo $resultStr;
+                    }else{
+                        echo "Input something...";
+                    }
                 }
+
             }
+
         }else {
             echo "";
             exit;
