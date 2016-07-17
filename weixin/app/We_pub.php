@@ -38,23 +38,23 @@ class We_pub extends Model{
             $keyword = trim($postObj->Content);
             $time = time();
             $textTpl = "<xml>
-							<ToUserName><![CDATA[%s]]></ToUserName>
-							<FromUserName><![CDATA[%s]]></FromUserName>
-							<CreateTime>%s</CreateTime>
-							<MsgType><![CDATA[%s]]></MsgType>
-							<Content><![CDATA[%s]]></Content>
-							</xml>";
+<ToUserName><![CDATA[%s]]></ToUserName>
+<FromUserName><![CDATA[%s]]></FromUserName>
+<CreateTime>%s</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[%s]]></Content>
+</xml>";
             if(!empty( $keyword ))
             {
                 $msgType = "text";
                 $contentStr='liyanzhao';
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $contentStr);
                 echo $resultStr;
             }
             else{
                 $msgType = "text";
                 $contentStr ='欢迎关注';
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $contentStr);
                 echo $resultStr;
             }
             /*//$this->logger("R ".$postStr);
