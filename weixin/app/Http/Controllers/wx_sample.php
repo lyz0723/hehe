@@ -5,6 +5,7 @@
 //define your token
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
+file_put_contents('/home/wwwroot/default/liyanzhao/hehe/weixin/storage/logs/1.log','abc');
 //$wechatObj->valid();
 //开启自动回复功能
 $wechatObj->responseMsg();
