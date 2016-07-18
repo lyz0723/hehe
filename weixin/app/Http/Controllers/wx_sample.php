@@ -16,12 +16,14 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             header('content-type:text');
         	echo $echoStr;
+            $this->responseMsg();
         	exit;
         }
     }
 
     public function responseMsg()
     {
+        echo 'aaaaaaaaaaaaaaaaaaaaaaa';die;
         //get post data, May be due to the different environments
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
