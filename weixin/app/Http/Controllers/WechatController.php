@@ -12,7 +12,7 @@ class WechatController extends Controller
 {
     public $wechatConfig = [
         'token'=>'TgxMjN5YW56aG', //填写你设定的key
-        'encodingaeskey'=>'9Gx1sdcjQTD9mZJ64GNzF7VBFHuKl2BUcj4YskXffvh', //填写加密用的EncodingAESKey
+        'encodingaeskey'=>'7EaHr7HMUWExTwOJqybXWnCMNVHMUS5IvzuJM5k8v0X', //填写加密用的EncodingAESKey
         'appid'=>'wx31343af4538e0e1a', //填写高级调用功能的app id
         'appsecret'=>'d4c6f9adb1ff19100889ff702622089c' //填写高级调用功能的密钥
     ];
