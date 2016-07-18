@@ -44,22 +44,17 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							</xml>";
 
-            if($msgType=='text'){
-
-                if(!empty( $keyword ))
-                {
-                    if($keyword=='杨云'){
-                        $contentStr = "李彦";
-                    }elseif($keyword=='于娜'){
-                        $contentStr ="于";
-                    }
+                if(!empty($keyword)){
+                    $msgType="text";
+                    $contentStr="halou ,nihao ";
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                   //file_put_contents("1.txt",$resultStr);
                     echo $resultStr;
                 }else{
-                    echo "Input something...";
+                    $msgType=="text";
+                    $contentStr="欢迎首次关注微信公众号";
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    echo $resultStr;
                 }
-            }
         }else {
             echo "";
             exit;
