@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="../../css/common/base.css">
+    <link rel="stylesheet" href="../../css/login-register/login.css">
+    <title>login</title>
+</head>
+
+<body>
+	<div class="login" id="LoginBox">
+    	<div class="login_box_header">登录</div>
+        <div class="login_box_content">
+        	<ul>
+            	<li>
+                	<img src="../../images/login-register/user.png" class="login_account_icon" />
+                	<input type="text" placeholder="用户名/手机号" id="login-username"/>
+                    <a href="register.html" class="login_account_about" id="login-ToRegister">注册账号 </a>
+                </li>
+                <li>
+                	<img src="../../images/login-register/userKey.png" class="login_account_icon" />
+                	<input type="text" placeholder="请输入密码" id="login-password"/>
+                    <a href="password.html" class="login_account_about" id="login-ForgetPassword">忘记密码 </a>
+                </li>
+            </ul>
+            <input type="button" class="login_submit_button" value="登录" id="login-btn"/>
+            <span class="login_begin_try" href="javascript:;" id="login-play">我先玩玩</span>
+        </div>
+       <div class="login_box_footer">
+                <span>其他账号登录:</span>
+                <a href="javascript:;" id="login-blog"><img src="../../images/login-register/blog.png"/></a>
+                <a href="javascript:;" id="login-wechat"><img src="../../images/login-register/wechat.png"/></a>
+       </div>
+    </div>	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="../../css/common/base.css">
+    <link rel="stylesheet" href="../../css/live-room/live-audience.css">
+    
+    
+	<title>live-audience(全屏)</title>
+</head>
+
+<body>
+<i class="live-audience-hide" id="live-audience-hideBtn">
+    <img src="../../images/live-room/hide.png" />
+</i>
+<div id="live-audience-allexit">
+	<div class="live-audience clearfix" id="live-Audience">
+        <input type="text" class="live-audience-input" id="live-audience-input"/>
+        <ul class="live-audience-oftenUsed">
+        	<li class="live-audience-default">
+            	<img src="../../images/common/talkicon.png"/>
+                <a href="javascript:;" id="live-audience-oftenBtn">常</a>
+            </li>
+            <li class="live-audience-showFirst" id="live-audience-showList">
+                <ul>
+                    <li>您看天气咋样？</li>
+                   	<li>您看天气咋样？</li>
+                  	<li>您看天气咋样？</li>
+                   	<li>您看天气咋样？</li>
+                    <li>您看天气咋样？</li>
+                   	<li>您看天气咋样？</li>
+                   
+                </ul>
+                <img src="../../images/common/list-border.png"/>
+            </li>
+        </ul>
+        <img src="../../images/live-room/love.png" class="live-audience-present"/>
+        <img src="../../images/live-room/present.png" class="live-audience-present"/>
+        <img src="../../images/live-room/flower.png" class="live-audience-present"/>
+        <input type="button" value="发送" class="live-audience-send" id="live-audience-send"/>
+    </div>
+     <input type="button" value="退出观战" class="live-audience-exit" id="live-audience-exitBtn"/>
+     <input type="button" value="开启弹幕" is_open="0" class="live-audience-flowWord" id="live-audience-flowWordBtn"/>
+     <div class="live-audience-flowWord-box" id="live-audience-flowWord-box"></div>
+</div>   
+
+
+
+
+
+
+
+
+
+	<script src="../../js/common/jquery-3.0.0.min.js"></script>
+  <script src="../../js/live-room/jquery.danmu.js"></script>
+  <script src="../../js/live-room/live-audience.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../../css/common/base.css">
+<link rel="stylesheet" href="../../css/login-register/register.css">
+
+<title>register</title>
+</head>
+
+<body>
+
+	<div class="register_box" id="RegisterBox">
+    	<div class="register_box_header">
+        	<h3 class="font_style">注&nbsp;&nbsp;册</h3>
+            <a href="login.html">
+            	<img src="../../images/common/close.png"/>
+            </a>
+        </div>
+        <div class="register_box_content" id="register">
+        	<h3>
+            	<a href="javascript:;" class="reg_left register_btn">手机号注册</a>
+                <a href="javascript:;">帐号注册</a>
+            </h3>
+        	<ul class="cell_register register_show" id="cell-register">
+            	<li>
+                	<img src="../../images/login-register/username.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="手机号：请输入手机号" id="register-cellnum"/>
+                </li>
+                <li>
+                	<img src="../../images/login-register/user.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="昵称：2-15字符，中英文，数字，下划线" id="register-username"/>
+                </li>
+                <li>
+                	<img src="../../images/login-register/userKey.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="密码：6-16字符，字母，数字或符号" id="register-userkey"/>
+                </li>
+                <li>
+                	<img src="../../images/login-register/identyCode.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="请输入验证码" id="register-inputCode"/>
+                    <input type="submit" value="获取验证码" class="reg_btn" id="register-btnCode"/>
+                </li>
+            	
+            </ul>
+            <ul class="account_register" id="account-register">
+            	<li>
+                	<img src="../../images/login-register/user.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="用户名：6-16字符，中英文，数字，下划线" id="register-accountName"/>
+                </li>
+                <li>
+                	<img src="../../images/login-register/cellnum.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="昵称：2-15字符，中英文，数字，下划线" id="register-accountCall"/>
+                </li>
+                <li>
+                	<img src="../../images/login-register/userKey.png" class="reg_cell_icon" />
+                	<input type="password" placeholder="密码：6-16字符，字母，数字或符号" id="register-accountKey"/>
+                </li>
+                <li>
+                	<img src="../../images/login-register/identyCode.png" class="reg_cell_icon" />
+                	<input type="text" placeholder="请输入验证码" id="register-inputCode"/>
+                    <a href="javascript:;" class="check_code_fa">
+                    	<img src="../../images/login-register/code.png" class="check_code" id="register-changeCode"/>
+                    </a>
+                </li>
+            
+            </ul>
+        </div>
+        <div class="register_box_footer">
+        	<input value="注册" type="submit" class="reg_footer_btn" id="register-btnFinished"/>
+        </div>
+    
+   	
+    
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="../../js/common/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="../../js/login-register/register.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

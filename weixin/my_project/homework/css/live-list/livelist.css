@@ -1,0 +1,79 @@
+/*头部*/
+.livelist{ width:100%; height:100%;border: 0.0625rem solid #00a0cb;box-sizing:border-box;}
+.livelist-header{ font-size:2rem; height:3rem; line-height:3rem;border-bottom:0.0625rem solid #00a0cb; color:#00a0cb; position:relative;}
+.livelist-header i{ float:left;}
+.livelist-text{ position:absolute; left:45%;}
+.livelist-closeImage{ position:absolute; right:5%; top:-0.3rem; width:1rem; height:1rem;}
+/*切换页面主内容*/
+.livelist-content-head span{ width:6rem; height:2.5rem; line-height:2.5rem; text-align:center; border-radius:0.5rem; float:left; border:0.0625rem solid #00a0cb; margin-top:0.2rem; margin-left:1.2rem; margin-top:1rem; color:#00a0cb; font-size:1.5rem;}
+
+.livelist-content{ position:relative;}
+.vs{ position:absolute; left:18.5rem;bottom:10rem; width:5rem; height:5rem; color:#0af4d6;}
+.vs span{ position:absolute;width:3rem; height:3rem; line-height:3rem; text-align:center; font-size:3.2rem; font-weight:bold;}
+.v{ left:-0.1rem; top:1.8rem; transform:skewX(-13deg);}
+.s{ right:0.5rem; bottom:0.2rem;transform:skewX(-11deg);}
+
+.livelist-main{ width:40rem; padding-left:3rem; margin-top:2rem;}
+.livelist-main li{ width:6rem; height:12rem; border:0.0625rem solid #6edaf7; margin-left:0.5rem; float:left;}
+.livelist-main li p{ font-size:1.3rem; color:#00a0cb; margin-left:0.7rem; margin-top:0.2rem;}
+.livelist-main li img{ width:5rem; height:5rem; margin-left:0.5rem; border-radius:2.5rem; border:0.1rem solid #f8d017;}
+.livelist-main .watch-match{ width:4.5rem; height:1.5rem; line-height:1.5rem; border:0.0625rem solid #00a0cb; margin-left:0.5rem; text-align:center; color:#00a0cb; border-radius:0.4rem; margin-top:0.3rem;}
+.livelist-footer{ width:8rem; height:2rem; line-height:2rem; text-align:center; border:0.0625rem solid #6edaf7; border-radius:0.5rem; background:#00a0cb; color:#fff; font-size:2rem; margin-top:1.5rem; margin-left:16rem;}
+.matchbox li{ width:13rem; height:9rem; border:0.0625rem solid #00a0cb; transform:skewX(156deg); float:left;margin-top:1rem; font-size:1.3rem; color:#00a0cb;}
+.matchbox li div{ transform:skewX(12deg); }
+.matchbox li .top-left,.matchbox li .top-right{ float:left;}
+.matchbox .match-left .top-left{ background: url(../../images/live-list/team1.png) no-repeat; width:4rem; height:4rem; margin-left:1rem; margin-top:1rem; margin-right:1rem;}
+.top-right{ margin-top:1.2rem;}
+.top-right p{ margin-top:0.1rem;}
+.matchbox li .match-bottom{transform:skewX(21deg); margin-top:1rem; text-align:center;}
+
+.matchbox .match-right .top-left{ background:url(../../images/live-list/team1.png) no-repeat; width:4rem; height:4rem;margin-left:1rem; margin-top:1rem; margin-right:1rem;}
+
+.livelist-content-head .livelist-active{ background:#00a0cb; color:#fff;}
+
+.livelist-mainbox{ display:none;}
+.livelist-content .livelist-show{ display:block;}
+
+
+
+
+
+
+
+.matchbox .match-left{ margin-left:7rem;}
+.matchbox .match-right{ margin-left:0.5rem; margin-top:2rem;}
+
+.livelist-matchBtn{ position:relative;}
+.livelist-matchBtn span{ position:absolute; width:8rem; height:2rem; line-height:2rem; text-align:center;border:0.0625rem solid #6edaf7;border-radius:0.5rem; background:#00a0cb; color:#fff; font-size:1.2rem;font-family:'Microsoft Yahei';}
+.leftbtn{bottom:-3rem; left:7rem;}
+.rightbtn{ bottom:-3rem; right:9rem;}
+.livelist-matchfooter{ width:8rem; height:2rem; line-height:2rem; text-align:center; border:0.0625rem solid #6edaf7;border-radius:0.5rem; background:#00a0cb; color:#fff; font-size:1.2rem; font-family:'Microsoft Yahei'; margin-top:4.8rem; margin-left:15rem;}
+
+
+
+
+
+/*iphone4*/
+@media screen and (min-width: 480px) and (max-width: 567px) and (orientation : landscape){
+  
+}
+
+/*iphone5*/
+@media screen and (min-width: 568px) and (max-width: 666px) and (orientation : landscape){
+     body{ padding: 7.2% 10%}
+}
+
+/*iphone6*/
+@media screen and (min-width: 667px) and (max-width: 735px) and (orientation : landscape){
+   body{ padding: 7.2% 10%}
+}
+
+/*iphone6 Plus*/
+@media screen and (min-width: 736px) and (max-width: 1023px) and (orientation : landscape){
+    body{ padding: 6.6% 10%}
+}
+
+/*ipaid*/
+@media screen and (min-width: 1024px) and (orientation : landscape) { 
+    body{ padding: 26% 25%}
+}

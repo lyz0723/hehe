@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'WechatController@index');
+Route::post('/', 'WechatController@index');
+
+
+
 //后台登录页面
 Route::get('login','UserController@login');
 //登录验证

@@ -1,0 +1,60 @@
+@charset "utf-8";
+/*公共*/
+
+.font_style { font-size: 1.2rem; color: #fff; text-align: center; height: 2.125rem; text-align: center; line-height: 2.125rem; border-bottom: 0.0625rem solid #fff; }
+.register_box { background: #6edaf7; border: 0.0625rem solid #38e19b; box-sizing: border-box; width: 100%; height: 100%; border: 0.1rem solid #6edaf7; }
+.register_box_header { position: relative; }
+.register_box_header a { position: absolute; right: 0; top: 0; }
+.register_box_header img { width: 2.8rem; height: 2.8rem; margin-top:-0.3rem; }
+.register_box_content h3 { height: 2rem; color: #6edaf7; border-bottom: 0.0625rem solid #05afda; margin-bottom: 0.5rem; }
+.register_box_content h3 a { height: 100%; line-height: 2rem; font-size: 1rem; color: #11b5bb; float: left; background: #6edaf7; width: 49.5%; text-align: center; }
+.register_box_content .reg_left { border-right: 0.0625rem solid #05afda; }
+.register_box_content li { width: 100%; height: 3rem; padding-left: 12%; }
+.register_box_content input { background-color: transparent; border-bottom: 0.0625rem solid #05afda; padding-left: 3rem; height: 2rem; width: 27rem; color: #11b5bb; font-size: 1.4rem; }
+.register_box_content .reg_cell_icon { position: absolute; left: 4.5rem; bottom: 1rem; width: 2rem; height: 2rem; }
+.register_box_content li { position: relative; }
+.register_box .reg_btn { width: 8rem; height: 2.5rem; border-radius: 0.3rem; font-size: 1.5rem; border: 0.0352rem solid #fff; text-align: center; color: #fff; margin-top: 2rem; margin-left: 6rem; position: absolute; right: 18%; bottom: 1.1rem; padding: 0; }
+.register_box .reg_btn:hover { width: 8rem; height: 2.5rem; border-radius: 0.3rem; font-size: 1.5rem; border: 0.0352rem solid #AEDDDD; text-align: center; color: #AEDDDD; margin-top: 2rem; margin-left: 6rem; position: absolute; right: 18%; bottom: 1.1rem; padding: 0; }
+.register_box .account_register { display: none; }
+.register_box .account_register li { position: relative; }
+.register_box .check_code_fa { position: absolute; right: 10rem; bottom: 3.5rem; }
+.register_box .check_code { width: 9rem; height: 2rem; position: absolute; right: -2rem; top: 0.00000001rem; border: 1px solid red; }
+.register_box_footer { position: relative; height: 3rem; margin-top: 1.5rem; }
+.register_box_footer .reg_footer_btn { width: 15rem; height: 1.9rem; background: #fff; color: #6edaf7; position: absolute; bottom: 2.6rem; left: 32%; border-radius: 0.5rem; border: 0.0625rem solid #38e19b; font-size: 1.5rem; }
+.register_box_content ul { display: none; }
+.register_box_content .register_btn { background: #fff; color: #6edaf7; }
+.register_box_content .register_show { display: block; }
+
+
+/*ipaid*/
+@media screen and (min-width: 1024px) and (orientation : landscape) {
+	body { padding: 26% 25% }
+.register_box .reg_btn { right: 26.5%; }
+.register_box .reg_btn:hover { right: 26.5%; }
+.register_box .check_code { right: 3rem; }
+}
+/*iphone4*/
+@media screen and (min-width: 480px) and (max-width: 567px) and (orientation : landscape) {
+.register_box_content li { width: 30rem; }
+.register_box .reg_btn { right: 0; }
+.register_box .reg_btn { right: 1%; }
+.register_box .reg_btn:hover { right: 1%; }
+.register_box .check_code { right: -10rem; }
+.font_style { height: 3rem; line-height: 3rem; font-size: 2rem; }
+.register_box_header a { top: 0.5rem; }
+.register_box_footer .reg_footer_btn { font-size: 2rem; height: 2.9rem; bottom: 0.6rem; }
+}
+/*iphone5*/
+@media screen and (min-width: 568px) and (max-width: 666px) and (orientation : landscape) {
+body { padding: 7.2% 10% }
+}
+
+/*iphone6*/
+@media screen and (min-width: 667px) and (max-width: 735px) and (orientation : landscape) {
+body { padding: 7.2% 10% }
+}
+
+/*iphone6 Plus*/
+@media screen and (min-width: 736px) and (max-width: 1023px) and (orientation : landscape) {
+body { padding: 6.6% 10% }
+}

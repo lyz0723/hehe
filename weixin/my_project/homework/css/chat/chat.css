@@ -1,0 +1,221 @@
+.chat-box { box-sizing: border-box; bottom: 0; position: fixed; border: 1px solid #00a0cb; }
+.chat-sidebar, .chat-main { float: left; }
+.chat-sidebar { width: 3rem; height: 22.05rem; border: 1px solid #00a0cb; border-left: none; border-top: none; }
+.chat-sidebar a { width: 2rem; height: 3.5rem; padding-top: 0.2rem; text-align: center; color: #00a0cb; font-size: 1.5rem; border: 1px solid #00a0cb; display: block; margin-left: 0.4rem; margin-top: 0.4rem; border-radius: 0.5rem; }
+.chat-sidebar .chat-sidebarBtn { background: #00a0cb; color: #fff; }
+.chat-main h3 { width: 17.42rem; height: 3rem; line-height: 3rem; border-bottom: 1px solid #00a0cb; position: relative; }
+.chat-main h3 a { color: #00a0cb; font-size: 1.3rem; }
+.chat-main .chat-box-close { background: url(../../images/common/close.png) no-repeat; width: 2rem; height: 2rem; position: absolute; right: 0.1rem; top: 0.5rem; }
+.chat-main h3 input { width: 1.5rem; height: 1.5rem; margin-left: 1rem; margin-top: -0.2rem; }
+.chat-main { border-bottom: 1px solid #00a0cb; height: 22.05rem; width: 17.5rem; }
+.chat-box .chat-inputbox { height: 3rem; width: 20.55rem; float: left; margin-top: 0.5rem; }
+.chat-box .smileimg { background: url(../../images/chat/smile.png) no-repeat center; background-size: 100%; width: 2rem; height: 2rem; }
+/*input输入部分*/
+
+
+
+
+.chat-inputbox-sound, .chat-inputbox-list, .chat-inputbox-smile, .chat-inputbox-write, .chat-inputbox-send { float: left; }
+.chat-inputbox-sound { position: relative; }
+.chat-inputbox-sound { background: url(../../images/chat/talk2.png) no-repeat center; width: 3rem; height: 3rem; margin-top: -0.4rem; margin-right: 0.2rem; }
+.chat-inputbox-sound input { position: absolute; bottom: 0.1rem; left: 0.1rem; width: 2.6rem; height: 2.6rem; z-index: -1; background-color: transparent; }
+.chat-inputbox-write { border: 0.0625rem solid #099; width: 7rem; height: 2rem; border-radius: 0.2rem; }
+.chat-inputbox-list { position: relative; }
+.chat-inputbox-list { background: url(../../images/common/talkicon.png) no-repeat center; width: 2.2rem; height: 2.2rem; margin-left: 0.1rem; }
+.chat-inputbox-list .oftenWords { border: 1px solid #00a0cb; border-radius: 0.5rem; position: absolute; top: -9.4rem; left: -5rem; width: 15rem; height: 8.7rem; background: #fff; }
+.chat-inputbox-list div { display: none; }
+.chat-inputbox-list .oftenWords li { font-size: 0.9rem; color: #00a0cb; margin-left: 0.5rem; margin-top: 0.2rem; }
+.chat-inputbox-list .oftenborder { position: absolute; width: 4rem; height: 1rem; top: -0.7rem; left: -1rem; }
+.chat-inputbox-smile { position: relative; }
+.chat-inputbox-smile .chat-oftenlook { border: 1px solid #00a0cb; border-radius: 0.5rem; position: absolute; top: -9.7rem; left: -9.5rem; width: 17rem; height: 8.7rem; background: #fff; display: none; }
+.chat-inputbox-smile .chat-oftenlook ul { display: none; }
+.chat-inputbox-smile .chat-oftenlook li { float: left; margin-top: 0.1rem; margin-left: 0.15rem; }
+.chat-inputbox-smile .chat-oftenlook .chat-lookShowbox { display: block; }
+.chat-inputbox-smile .chat-oftenlook div { width: 4rem; margin-left: 7rem; margin-top: 0.5rem; }
+.chat-inputbox-smile .chat-oftenlook div .chat-lookBtn { background: #b3b3b3; }
+.chat-inputbox-smile .chat-oftenlook i { width: 0.4rem; height: 0.4rem; background: #d1d5dc; border: 0.0625rem solid #ced3d9; float: left; margin-left: 0.4rem; border-radius: 0.4rem; }
+.chat-inputbox-smile .oftenborder { position: absolute; width: 4rem; height: 1rem; bottom: -1rem; right: 4rem; }
+.chat-inputbox-smile { width: 2.2rem; height: 2.2rem; }
+.chat-inputbox-send { background-color: transparent; border: 0.0625rem solid #00a0cb; border-radius: 0.5rem; width: 4rem; height: 2rem; line-height: 2rem; text-align: center; color: #00a0cb; margin-left: 0.5rem; }
+.chat-content { font-size: 0.5rem; display: none; }
+.chat-main .chat-content-showbox { display: block; }
+.chat-content-demo li { margin-top: 0.5rem; }
+.chat-system li span { width: 3rem; height: 1.6rem; line-height: 1.6rem; text-align: center; border-radius: 0.3rem; border: 0.0625rem solid #ed1437; color: #ed1437; float: left; font-size: 0.5rem; margin-left: 0.4rem; }
+.chat-system li p { float: left; border: 0.0625rem solid #00a0cb; color: #00a0cb; height: 1.6rem; line-height: 1.6rem; border-radius: 0.3rem; margin-left: 0.2rem; padding-left: 0.2rem; padding-right: 0.2rem; }
+.chat-leftdemo { margin-left: 0.5rem; }
+/*左侧文本*/
+
+
+
+.left-head { background: url(../../images/chat/boy.png) no-repeat center; width: 2rem; height: 2rem; }
+.chat-demo-left-text .left-main { width: 7rem; height: 2rem; line-height: 1rem; text-align: center; margin-left: 0.1rem; }
+.chat-demo-left-text .left-main div { background: #00a0cb; color: #fff; border-radius: 0.2rem; height: 2rem; line-height: 2rem; font-size: 0.5rem; }
+.chat-content .left-main { position: relative; }
+.chat-content .left-main i { position: absolute; background: url(%E9%A1%B9%E7%9B%AE-%E5%88%86%E5%BC%80/%E8%81%8A%E5%A4%A9/chat/images/trangle.png) no-repeat; width: 1rem; height: 1.6rem; left: -0.4rem; bottom: -1.3rem; }
+/*左侧语音*/
+
+
+
+
+.chat-demo-left-talk .left-main { width: 7rem; height: 2rem; line-height: 1rem; text-align: center; margin-left: 0.1rem; }
+.chat-demo-left-talk .left-main div { position: relative; }
+.chat-demo-left-talk .left-main div img { position: absolute; left: 0.5rem; bottom: 0.2rem; }
+.chat-demo-left-talk .left-main div a { color: #fff; position: absolute; left: 2rem; bottom: 0; }
+.chat-demo-left-talk .left-main div { background: #00a0cb; color: #fff; border-radius: 0.2rem; height: 2rem; line-height: 1.5rem; }
+.chat-content .left-main { position: relative; }
+.chat-main .chat-content .audioImage { background: url(../../images/chat/l_mirror2.png) no-repeat center; display: inline-block; width: 1.2rem; height: 1rem; }
+/*html模板*/
+
+/*.html-demo-share .html-demobox{ border-radius:0.1rem; border:0.0625rem solid #ff9900; background:#ff9900; margin-left:0.25rem; padding-left:0.1rem; padding-top:0.1rem; width:6rem; }
+.html-demo-share .inplace{ background:#fff; width:6.0rem; height:0.3rem;float:left;}
+.html-demo-share .hero-derective h4{ font-size:0.8rem;}
+.html-demo-share .hero-derective p{ font-size:0.2rem;}
+.html-demo-share .hero-head{ float:left;}
+.html-demo-share .hero-head img{width:2rem; height:1.5rem;}
+.html-demo-share .hero-derective{ float:left;}*/
+
+
+
+
+.chat-content-demo .chat-rightdemo { margin-right: 0.5rem; margin-bottom: 1rem; }
+/*右侧文本*/
+
+
+
+.right-head { background: url(../../images/chat/girl.png) no-repeat center; width: 2rem; height: 2rem; }
+.chat-demo-right-text .right-main { width: 7rem; height: 2rem; line-height: 1rem; text-align: center; margin-left: 0.1rem; }
+.chat-demo-right-text .right-main div { background: #00a0cb; color: #fff; border-radius: 0.2rem; height: 2rem; line-height: 2rem; margin-top: 0.5rem; }
+.chat-content .right-main { position: relative; }
+.chat-content .right-main i { position: absolute; background: url(%E9%A1%B9%E7%9B%AE-%E5%88%86%E5%BC%80/%E8%81%8A%E5%A4%A9/chat/images/trangle-r.png) no-repeat; width: 2rem; height: 1.5rem; right: -1.9rem; bottom: -1rem; }
+/*右侧语音*/
+
+
+
+
+.chat-demo-right-talk .right-main { width: 7rem; height: 2rem; line-height: 1rem; text-align: center; margin-left: 0.1rem; }
+.chat-demo-right-talk .right-main div { background: #00a0cb; color: #fff; border-radius: 0.2rem; height: 2rem; line-height: 2rem; position: relative; margin-top: 0.5rem; }
+.chat-demo-right-talk .right-main div img { position: absolute; right: 0.5rem; bottom: 0.3rem; }
+.chat-demo-right-talk .right-main div a { color: #fff; position: absolute; right: 1.8rem; bottom: -0.2rem; }
+.chat-content .right-main { position: relative; }
+.chat-leftdemo .left-head { float: left; }
+.chat-leftdemo .left-main { float: left; }
+.chat-rightdemo .right-head { float: right; }
+.chat-rightdemo .right-main { float: right; }
+
+
+
+
+/*ipaid*/
+@media screen and (min-width: 1024px) and (orientation : landscape) {
+html { font-size: 75% }
+.chat-box { width: 50%; height: 75%; width: 50%; height: 75%; }
+.chat-main { width: 39.4rem; height: 44.05rem }
+.chat-sidebar { height: 44.05rem; }
+.chat-sidebar a { height: 5.3rem; padding-top: 2.8rem; }
+.chat-main h3 { width: 33.42rem; padding-left: 6rem; }
+.chat-content-demo li { margin-top: 2.6rem; }
+.chat-leftdemo .left-main p { width: 12rem; font-size: 1.5rem }
+.chat-leftdemo .left-main .chat-demo-left-text-box { width: 12rem; margin-top: 0.7rem; margin-left: 0.2rem; }
+.chat-leftdemo .html-demo-share .html-demobox { width: 10rem; }
+.chat-leftdemo .html-demo-share .html-demobox .hero-derective p { width: 7.5rem; }
+.chat-leftdemo .html-demo-share .inplace { width: 14rem }
+.chat-content .left-main i{ left:0.6rem; bottom:0.1rem;}
+.chat-main .chat-content .audioImage{ height:1.2rem;}
+.chat-content .right-main i{ right:0.3rem; bottom:0.3rem; transform:rotate(180deg);}
+.chat-rightdemo .right-main p { width: 12rem; font-size: 1.5rem }
+.chat-rightdemo .html-demo-share { width: 12rem; }
+.chat-rightdemo .html-demo-share .html-demobox { width: 10rem; float: right; }
+.chat-rightdemo .right-main { width: 12rem; }
+.chat-rightdemo .html-demo-share .inplace { width: 14rem }
+.chat-rightdemo .html-demo-share .html-demobox .hero-derective p { width: 7.5rem; }
+.chat-box .chat-inputbox { width: 40rem; }
+.chat-inputbox-write { width: 18rem; }
+.chat-inputbox-list { margin-left: 1rem; margin-right: 0.6rem; width: 2.6rem; }
+.chat-inputbox-send { margin-left: 2.5rem; width: 9rem; }
+.chat-inputbox-smile { margin-top: -0.1rem; }
+.right-head{ margin-left:0.5rem;}
+}
+
+/*iphone6*/
+@media screen and (min-width: 667px) and (max-width: 735px) and (orientation : landscape) {
+.chat-box { width: 45%; height: 100%; }
+.chat-main { width: 18.2em; height: 23.55rem; }
+.chat-sidebar { height: 23.55rem; }
+.chat-sidebar a { padding-top: 0.6rem; }
+.chat-main h3 { width: 18.22rem; }
+.chat-inputbox-list{ width:2.5rem; margin-left:0.3rem;}
+.chat-content .chat-leftdemo { margin-bottom: 1.2rem; }
+.chat-content .left-main i { left: 0.34rem; bottom: 0; }
+.chat-content .right-main i { right: -1.95rem; }
+.chat-content .right-main i{ right:0.6rem; transform:rotate(180deg); bottom:0.3rem;}
+.chat-leftdemo .left-head { margin-right: 0.7rem; }
+.chat-demo-left-text .left-main div { margin-top: 0.2rem; }
+.chat-demo-left-talk .left-main div { margin-top: 0.2rem; }
+.chat-content .chat-rightdemo { margin-bottom: 1.6rem; }
+.chat-content .chat-demo-right-text { margin-top: -0.2rem; }
+.chat-main .chat-content .audioImage{ height:1.2rem; width:1.2rem;}
+}
+/*iphone6 Plus*/
+@media screen and (min-width: 736px) and (max-width: 1023px) and (orientation : landscape) {
+.chat-box { width: 45%; height: 100%; }
+.chat-box .right-head{ margin-left:0.4rem;}
+.chat-content-demo li { margin-bottom: 1.2rem; }
+.chat-demo-left-text .left-main div { margin-left: 0.5rem; margin-top: 0.1rem; }
+.chat-content .left-main i { left: 0.5rem; bottom: 0.2rem; }
+.chat-demo-left-talk .left-main div { margin-left: 0.5rem; margin-top: 0.1rem; }
+.chat-content .right-main i { right: 0.5rem; bottom: 0.5rem; transform: rotate(180deg); }
+.chat-content .chat-demo-right-text { margin-top: -0.5rem; }
+.chat-demo-right-text .right-main div { margin-top: 0.05rem; }
+.chat-demo-right-talk .right-main div { margin-top: 0.05rem; }
+}
+
+/*iphone5*/
+@media screen and (min-width: 568px) and (max-width: 666px) and (orientation : landscape) {
+.chat-box { width: 45%; height: 100%; }
+.chat-main .chat-content .audioImage{ height:1.2rem;}
+.chat-main { width: 18rem; height: 23.45rem; }
+.chat-sidebar { height: 23.45rem; }
+.chat-sidebar a { padding-top: 0.5rem; }
+.chat-main h3 { width: 18.12rem; }
+.chat-inputbox-sound{ margin-left:0.3rem; height:2.8rem; width:2.8rem;}
+.chat-leftdemo .left-main p { width: 8rem; }
+.chat-rightdemo .right-main p { width: 8rem; }
+.html-demo-share .html-demobox { width: 10rem; }
+.chat-demo-left-text .left-main div { margin-left: 0.6rem; margin-top: 0.2rem; width: 9rem; height: 1.9rem; }
+.chat-demo-left-talk .left-main div { margin-left: 0.6rem; width: 9rem; margin-top: 0.2rem; }
+.chat-leftdemo .left-head { margin-right: 0.2rem; }
+.chat-content .left-main i { left: 0.6rem; bottom: 0.1rem; }
+.chat-content .chat-leftdemo { margin-bottom: 1.3rem; }
+.chat-demo-right-text .right-main div { width: 9rem; height: 1.9rem; }
+.chat-demo-right-talk .right-main div { width: 9rem; height: 1.9rem; }
+.chat-content .right-main { margin-right: 1rem; }
+.chat-content .right-main i { right: 0.5rem; bottom:0.35rem; transform:rotate(180deg); }
+.chat-rightdemo .right-head { margin-left: 1rem; }
+.chat-inputbox-list{ width:2.7rem; margin-left:0.3rem;}
+.chat-content-demo .chat-rightdemo{ margin-bottom:1.8rem;}
+}
+/*iphone4*/
+@media screen and (min-width: 480px) and (max-width: 567px) and (orientation : landscape) {
+.chat-box { width: 75%; height: 100%; }
+.chat-main h3 { width: 26.7rem; }
+.chat-content .left-main i { left: -0.7rem; bottom: -0.9rem; }
+.chat-content-demo li { margin-bottom: 1.2rem; }
+.chat-leftdemo .left-main { width: 10rem; }
+.chat-leftdemo .left-head { margin-right: 0.8rem; }
+.chat-main { width: 26.7rem; }
+.chat-box .chat-inputbox { width: 29.55rem; margin-top: 1.2rem; }
+.chat-inputbox-write { width: 14rem; }
+.chat-inputbox-send { width: 5.2rem; }
+.chat-inputbox-list img { margin-left: 1.1rem; margin-right: 0.3rem; }
+.chat-demo-left-text .left-main div { margin-top: 0.3rem; }
+.chat-demo-left-talk .left-main div { margin-top: 0.3rem; }
+.chat-rightdemo .right-main { width: 10rem; }
+.chat-inputbox-list{ width:2.7rem;}
+.chat-content .left-main i{ left:0.5rem; bottom:0.1rem;}
+.chat-content-demo .chat-demo-right-text{ margin-bottom:1.6rem;}
+.chat-rightdemo .right-head{ margin-left:0.2rem;}
+.chat-content-demo li{ margin-bottom:1.5rem;}
+.chat-main .chat-content .audioImage{ height:1.3rem;}
+.chat-content-demo .chat-demo-right-text{ margin-top:-1rem;}
+.chat-content .right-main i{ right:0.1rem; bottom:0.3rem; transform:rotate(180deg);}
+}

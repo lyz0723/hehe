@@ -1,0 +1,278 @@
+
+.live-audience
+{
+	height: 4rem;
+	width: 100%;
+	background: #89cdf2;
+	bottom: 0;
+	position: fixed;
+}
+
+.live-audience input
+{
+	background-color: transparent;
+	width: 8rem;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	border: 0.0625rem solid #099;
+	border-radius: 0.5rem;
+}
+
+.live-audience img
+{
+	height: 3rem;
+	margin-top: 0.5rem;
+}
+
+.live-audience-hide img
+{
+	width: 2rem;
+	height: 2rem;
+}
+
+.live-audience i, .live-audience img, .live-audience input, .live-audience ul
+{
+	float: left;
+}
+
+.live-audience-hide
+{
+	margin-right: 0.5rem;
+	margin-top: 1rem;
+	margin-left: 0.5rem;
+	position: fixed;
+	bottom: 0.8rem;
+	z-index: 2;
+}
+
+.live-audience-show
+{
+	display: block;
+	position: fixed;
+	bottom: 0.6rem;
+	left: 0.5rem;
+	opacity: 0;
+}
+
+.live-audience-show img
+{
+	width: 2rem;
+	height: 2rem;
+}
+
+.live-audience .live-audience-input
+{
+	margin-top: 1rem;
+	background: #c9def3;
+	width: 20rem;
+	height: 2rem;
+	float: left;
+	border: 0.05rem solid #00a600;
+	border-radius: 0.5rem;
+	margin-left: 3.5rem;
+}
+
+.live-audience-oftenUsed
+{
+	position: relative;
+}
+
+.live-audience-oftenUsed .live-audience-showFirst
+{
+	width: 12rem;
+	padding-left: 1rem;
+	border: 1px solid #2fb3de;
+	border-radius: 0.5rem;
+	margin-bottom: 1rem;
+	position: absolute;
+	top: -14rem;
+	right: 1rem;
+	display: none;
+}
+
+.live-audience-oftenUsed .live-audience-showFirst img
+{
+	width: 2rem;
+	height: 1rem;
+	position: absolute;
+	bottom: -0.98rem;
+	right: 0;
+}
+
+.live-audience-oftenUsed .live-audience-showFirst li
+{
+	color: #2fb3de;
+	font-size: 1.5rem;
+	margin-top: 0.5rem;
+}
+
+.live-audience-oftenUsed .live-audience-default
+{
+	position: relative;
+	text-align: center;
+	width: 5rem;
+	height: 3rem;
+}
+
+.live-audience-oftenUsed .live-audience-default img
+{
+	width: 4rem;
+	height: 4rem;
+	position: absolute;
+	z-index: -1;
+	bottom: -1.2rem;
+	right: 0.5rem;
+}
+
+.live-audience-oftenUsed .live-audience-default a
+{
+	color: #50a8d7;
+	font-size: 1.5rem;
+	font-weight: bold;
+	position: absolute;
+	bottom: 0.1rem;
+	right: 1.8rem;
+}
+
+.live-audience-exit
+{
+	position: fixed;
+	bottom: 7.5rem;
+	right: 1rem;
+	width: 7rem;
+	height: 2rem;
+	color: #00a600;
+	background-color: transparent;
+	border: 0.0625rem solid #099;
+	border-radius: 0.5rem;
+}
+
+.live-audience-flowWord
+{
+	font-size: 1rem;
+	position: fixed;
+	bottom: 4.5rem;
+	right: 1rem;
+	width: 7rem;
+	height: 2rem;
+	color: #00a600;
+	background-color: transparent;
+	border: 0.0625rem solid #099;
+	border-radius: 0.5rem;
+}
+
+.live-audience .live-audience-send
+{
+	margin-top: 1rem;
+	width: 7rem;
+	height: 2rem;
+	color: #00a600;
+	position: absolute;
+	top: 0;
+	right: 1rem;
+}
+
+
+
+/*iphone4*/
+@media screen and (min-width: 480px) and (max-width: 567px) and (orientation : landscape) {
+
+.live-host
+{
+	width: 100%;
+}
+
+.live-audience .live-audience-input
+{
+	width: 13rem;
+}
+
+.live-audience-oftenUsed .live-audience-showFirst
+{
+	top: -12rem;
+}
+}
+/*iphone5*/
+@media screen and (min-width: 568px) and (max-width: 666px) and (orientation : landscape) {
+
+.live-host
+{
+	width: 80%;
+	left: 10%;
+}
+}
+/*iphone6*/
+@media screen and (min-width: 667px) and (max-width: 735px) and (orientation : landscape) {
+
+.live-host
+{
+	width: 80%;
+	left: 10%;
+}
+}
+
+/*iphone6 Plus*/
+@media screen and (min-width: 736px) and (max-width: 1023px) and (orientation : landscape) {
+
+.live-host
+{
+	width: 80%;
+	left: 10%;
+}
+
+.live-audience-exit
+{
+	font-size: 1rem;
+}
+
+.live-audience .live-audience-send
+{
+	font-size: 1rem;
+}
+}
+/*ipaid*/
+@media screen and (min-width: 1024px) and (orientation : landscape) {
+
+.live-host
+{
+	width: 50%;
+	left: 25%;
+}
+
+.live-audience-flowWord
+{
+	font-size: 1.5rem;
+	width: 10rem;
+	height: 2.5rem;
+}
+
+.live-audience-exit
+{
+	font-size: 1.5rem;
+	width: 10rem;
+	height: 2.5rem;
+}
+
+.live-audience .live-audience-send
+{
+	margin-top: 1rem;
+	width: 10rem;
+	height: 2.5rem;
+	color: #00a600;
+	position: absolute;
+	top: 0;
+	right: 1rem;
+	font-size: 1.5rem;
+}
+
+.live-audience .live-audience-input
+{
+	width: 30rem;
+}
+
+.live-audience-oftenUsed .live-audience-showFirst li
+{
+	width: 30rem;
+}
+}
