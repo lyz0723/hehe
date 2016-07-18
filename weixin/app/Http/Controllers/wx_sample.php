@@ -57,10 +57,10 @@ class wechatCallbackapiTest
                     }
                     //file_put_contents("1.txt",$contentStr);
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    file_put_contents("1.txt",$resultStr);
-                    //echo $resultStr;
+                   //file_put_contents("1.txt",$resultStr);
+                    echo $resultStr;
                 }else{
-                    echo "Input something...";
+                    echo "";
                 }
             }
         }else {
