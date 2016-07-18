@@ -5,8 +5,7 @@
 //define your token
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
-file_put_contents('/home/wwwroot/default/liyanzhao/hehe/weixin/storage/logs/1.log','abc');
-//$wechatObj->valid();
+$wechatObj->valid();
 //开启自动回复功能
 $wechatObj->responseMsg();
 class wechatCallbackapiTest
@@ -18,7 +17,6 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             header('content-type:text');
         	echo $echoStr;
-            $this->responseMsg();
         	exit;
         }
     }
@@ -57,7 +55,6 @@ class wechatCallbackapiTest
                         $contentStr ="于";
                     }
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    print_r($resultStr);die;
                    //file_put_contents("1.txt",$resultStr);
                     echo $resultStr;
                 }else{
