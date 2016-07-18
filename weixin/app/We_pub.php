@@ -27,75 +27,75 @@ class We_pub extends Model{
         $arr=DB::table('we_pub')->where('p_rand','=',$do)->first();
         return $arr->token;
     }
-    public function responseMsg()
-    {
-        //$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-        if (!empty($postStr)) {
-            libxml_disable_entity_loader(true);
-            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $fromUsername = $postObj->FromUserName;
-            $toUsername = $postObj->ToUserName;
-            $keyword = trim($postObj->Content);
-            $time = time();
-            $textTpl = "<xml>
-							<ToUserName><![CDATA[%s]]></ToUserName>
-							<FromUserName><![CDATA[%s]]></FromUserName>
-							<CreateTime>%s</CreateTime>
-							<MsgType><![CDATA[%s]]></MsgType>
-							<Content><![CDATA[%s]]></Content>
-							<FuncFlag>0</FuncFlag>
-							</xml>";
-            if(!empty( $keyword ))
-            {
-                $msgType = "text";
-                $contentStr='liyanzhao';
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-            }
-            else{
-                $msgType = "text";
-                $contentStr ='欢迎关注';
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-            }
-            /*//$this->logger("R ".$postStr);
-            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $RX_TYPE = trim($postObj->MsgType);
-            //消息类型分离
-            switch ($RX_TYPE)
-            {
-                case "event":
-                    $result = $this->receiveEvent($postObj);
-                    break;
-                case "text":
-                    $result = $this->receiveText($postObj);
-                    break;
-                case "image":
-                    $result = $this->transmitText($postObj,'已收到您的图片信息，谢谢！');
-                    break;
-                case "voice":
-                    $result = $this->transmitText($postObj,'已收到您的语音信息，谢谢！');
-                    break;
-                case "video":
-                    $result = $this->transmitText($postObj,'已收到您的视频信息，谢谢！');
-                    break;
-                case "shortvideo":
-                    $result = $this->transmitText($postObj,'已收到您的小视频信息，谢谢！');
-                    break;
-                case "location":
-                    $result = $this->transmitText($postObj,'已收到您的地理位置信息，谢谢！');
-                    break;
-                case "link":
-                    $result = $this->transmitText($postObj,'已收到您的链接信息，谢谢！');
-                    break;
-                default:
-                    $result = $this->transmitText($postObj,'已收到您的'.$RX_TYPE.'信息，谢谢！');
-                    break;
-            }
-            echo $result;*/
-        }else {
-            echo "";
-            exit;
-        }
-    }
+//    public function responseMsg()
+//    {
+//        //$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+//        if (!empty($postStr)) {
+//            libxml_disable_entity_loader(true);
+//            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+//            $fromUsername = $postObj->FromUserName;
+//            $toUsername = $postObj->ToUserName;
+//            $keyword = trim($postObj->Content);
+//            $time = time();
+//            $textTpl = "<xml>
+//							<ToUserName><![CDATA[%s]]></ToUserName>
+//							<FromUserName><![CDATA[%s]]></FromUserName>
+//							<CreateTime>%s</CreateTime>
+//							<MsgType><![CDATA[%s]]></MsgType>
+//							<Content><![CDATA[%s]]></Content>
+//							<FuncFlag>0</FuncFlag>
+//							</xml>";
+//            if(!empty( $keyword ))
+//            {
+//                $msgType = "text";
+//                $contentStr='liyanzhao';
+//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+//                echo $resultStr;
+//            }
+//            else{
+//                $msgType = "text";
+//                $contentStr ='欢迎关注';
+//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+//                echo $resultStr;
+//            }
+//            /*//$this->logger("R ".$postStr);
+//            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+//            $RX_TYPE = trim($postObj->MsgType);
+//            //消息类型分离
+//            switch ($RX_TYPE)
+//            {
+//                case "event":
+//                    $result = $this->receiveEvent($postObj);
+//                    break;
+//                case "text":
+//                    $result = $this->receiveText($postObj);
+//                    break;
+//                case "image":
+//                    $result = $this->transmitText($postObj,'已收到您的图片信息，谢谢！');
+//                    break;
+//                case "voice":
+//                    $result = $this->transmitText($postObj,'已收到您的语音信息，谢谢！');
+//                    break;
+//                case "video":
+//                    $result = $this->transmitText($postObj,'已收到您的视频信息，谢谢！');
+//                    break;
+//                case "shortvideo":
+//                    $result = $this->transmitText($postObj,'已收到您的小视频信息，谢谢！');
+//                    break;
+//                case "location":
+//                    $result = $this->transmitText($postObj,'已收到您的地理位置信息，谢谢！');
+//                    break;
+//                case "link":
+//                    $result = $this->transmitText($postObj,'已收到您的链接信息，谢谢！');
+//                    break;
+//                default:
+//                    $result = $this->transmitText($postObj,'已收到您的'.$RX_TYPE.'信息，谢谢！');
+//                    break;
+//            }
+//            echo $result;*/
+//        }else {
+//            echo "";
+//            exit;
+//        }
+//    }
 }
