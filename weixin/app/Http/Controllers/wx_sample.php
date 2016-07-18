@@ -6,8 +6,6 @@
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
 //$wechatObj->valid();
-$arr=file_get_contents("1.txt");
-echo $arr;
 //开启自动回复功能
 $wechatObj->responseMsg();
 class wechatCallbackapiTest
