@@ -90,30 +90,30 @@ class AccountController extends Controller
         $arr=new We_pub();
         //$arr->responseMsg();
         $token=$arr->api($do);
-        //include"wx_sample.php";
+        include"wx_sample.php";
         //echo $do;die;
        // $arr=new We_pub();
-        if(isset($_GET["echostr"])) {
-            $echoStr=$_GET["echostr"];
-            $signature = $_GET["signature"];
-            $timestamp = $_GET["timestamp"];
-            $nonce = $_GET["nonce"];
-            $token=$arr->api($do);
-            $tmpArr = array($token, $timestamp, $nonce);
-            sort($tmpArr, SORT_STRING);
-            $tmpStr = implode( $tmpArr );
-            $tmpStr = sha1( $tmpStr );
-            if($tmpStr == $signature){
-                $arr->responseMsg();
-                header('content-type:text');
-                echo $echoStr;
-                exit;
-            }else{
-                echo '';
-            }
-        }else{
-            $arr->responseMsg();
-        }
+//        if(isset($_GET["echostr"])) {
+//            $echoStr=$_GET["echostr"];
+//            $signature = $_GET["signature"];
+//            $timestamp = $_GET["timestamp"];
+//            $nonce = $_GET["nonce"];
+//            $token=$arr->api($do);
+//            $tmpArr = array($token, $timestamp, $nonce);
+//            sort($tmpArr, SORT_STRING);
+//            $tmpStr = implode( $tmpArr );
+//            $tmpStr = sha1( $tmpStr );
+//            if($tmpStr == $signature){
+//                $arr->responseMsg();
+//                header('content-type:text');
+//                echo $echoStr;
+//                exit;
+//            }else{
+//                echo '';
+//            }
+//        }else{
+//            $arr->responseMsg();
+//        }
 
     }
 

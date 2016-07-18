@@ -27,37 +27,37 @@ class We_pub extends Model{
         $arr=DB::table('we_pub')->where('p_rand','=',$do)->first();
         return $arr->token;
     }
-    public function responseMsg()
-    {
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-        if (!empty($postStr)) {
-            libxml_disable_entity_loader(true);
-            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $fromUsername = $postObj->FromUserName;
-            $toUsername = $postObj->ToUserName;
-            $keyword = trim($postObj->Content);
-            $time = time();
-            $textTpl = "<xml>
-							<ToUserName><![CDATA[%s]]></ToUserName>
-							<FromUserName><![CDATA[%s]]></FromUserName>
-							<CreateTime>%s</CreateTime>
-							<MsgType><![CDATA[%s]]></MsgType>
-							<Content><![CDATA[%s]]></Content>
-							<FuncFlag>0</FuncFlag>
-							</xml>";
-            if(!empty( $keyword ))
-            {
-                $msgType = "text";
-                $contentStr='liyanzhao';
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-            }
-            else{
-                $msgType = "text";
-                $contentStr ='欢迎关注';
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-            }
+//    public function responseMsg()
+//    {
+//        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+//        if (!empty($postStr)) {
+//            libxml_disable_entity_loader(true);
+//            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+//            $fromUsername = $postObj->FromUserName;
+//            $toUsername = $postObj->ToUserName;
+//            $keyword = trim($postObj->Content);
+//            $time = time();
+//            $textTpl = "<xml>
+//							<ToUserName><![CDATA[%s]]></ToUserName>
+//							<FromUserName><![CDATA[%s]]></FromUserName>
+//							<CreateTime>%s</CreateTime>
+//							<MsgType><![CDATA[%s]]></MsgType>
+//							<Content><![CDATA[%s]]></Content>
+//							<FuncFlag>0</FuncFlag>
+//							</xml>";
+//            if(!empty( $keyword ))
+//            {
+//                $msgType = "text";
+//                $contentStr='liyanzhao';
+//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+//                echo $resultStr;
+//            }
+//            else{
+//                $msgType = "text";
+//                $contentStr ='欢迎关注';
+//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+//                echo $resultStr;
+//            }
             /*//$this->logger("R ".$postStr);
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $RX_TYPE = trim($postObj->MsgType);
@@ -93,9 +93,9 @@ class We_pub extends Model{
                     break;
             }
             echo $result;*/
-        }else {
-            echo "adassd";
-            exit;
-        }
-    }
+//        }else {
+//            echo "adassd";
+//            exit;
+//        }
+//    }
 }
