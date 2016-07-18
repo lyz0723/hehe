@@ -55,9 +55,10 @@ class wechatCallbackapiTest
                     }elseif($keyword=='于娜'){
                         $contentStr ="于娜";
                     }
-                    file_put_contents("1.html",$contentStr);
+
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    echo $resultStr;
+                    file_put_contents("1.html",$resultStr);
+                    //echo $resultStr;
                 }else{
                     echo "Input something...";
                 }
