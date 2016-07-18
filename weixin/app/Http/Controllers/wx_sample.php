@@ -7,7 +7,7 @@ define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 //开启自动回复功能
-//$wechatObj->responseMsg();
+$wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
 	public function valid()
@@ -55,7 +55,7 @@ class wechatCallbackapiTest
                     }elseif($keyword=='于娜'){
                         $contentStr ="于娜";
                     }
-                    //file_put_contents("1.txt",$contentStr);
+                    file_put_contents("1.txt",$contentStr);
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                    //file_put_contents("1.txt",$resultStr);
                     echo $resultStr;
