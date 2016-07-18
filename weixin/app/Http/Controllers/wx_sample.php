@@ -60,7 +60,7 @@ class wechatCallbackapiTest
                    //file_put_contents("1.txt",$resultStr);
                     echo $resultStr;
                 }else{
-                    echo "";
+                    echo "Input something...";
                 }
             }
         }else {
