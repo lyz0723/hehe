@@ -89,7 +89,7 @@ class AccountController extends Controller
     {
         $do = $_GET['do'];
         $arr = new We_pub();
-        $arr->responseMsg();
+       // $arr->responseMsg();
         $token = $arr->api($do);
         include "wx_sample.php";
         //echo $do;die;
