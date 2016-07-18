@@ -11,7 +11,7 @@ class wechatCallbackapiTest
 {
 	public function valid()
     {
-        echo '1111111111111111111';die;
+       // echo '1111111111111111111';die;
         $echoStr = $_GET["echostr"];
         //valid signature , option
         if($this->checkSignature()){
@@ -24,7 +24,7 @@ class wechatCallbackapiTest
 
     public function responseMsg()
     {
-        echo 'aaaaaaaaaaaaaaaaaaaaaaa';die;
+        //echo 'aaaaaaaaaaaaaaaaaaaaaaa';die;
         //get post data, May be due to the different environments
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
