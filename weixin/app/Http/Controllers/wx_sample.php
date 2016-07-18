@@ -51,17 +51,17 @@ class wechatCallbackapiTest
 
                 if(!empty( $keyword ))
                 {
-                    if($keyword=='杨云昊'){
-                        $contentStr = "李彦钊";
+                    if($keyword=='杨云'){
+                        $contentStr = "李彦";
                     }elseif($keyword=='于娜'){
-                        $contentStr ="于娜";
+                        $contentStr ="于";
                     }
-                    file_put_contents("1.txt",$contentStr);
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    print_r($resultStr);die;
                    //file_put_contents("1.txt",$resultStr);
                     echo $resultStr;
                 }else{
-                    echo "Input something...";
+                    echo sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, "Input something...");
                 }
             }
         }else {
