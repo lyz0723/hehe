@@ -5,7 +5,7 @@
 //define your token
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
+//$wechatObj->valid();
 //开启自动回复功能
 $wechatObj->responseMsg();
 class wechatCallbackapiTest
@@ -45,16 +45,18 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							</xml>";
+
             if($msgType=='text'){
 
                 if(!empty( $keyword ))
                 {
-                    if($keyword=="文本"){
-                        $msgType = "text";
-                        $contentStr = "已收到文本消息";
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
+                    if($keyword=='杨云昊'){
+                        $contentStr = "李彦钊";
+                    }elseif($keyword=='于娜'){
+                        $contentStr ="于娜";
                     }
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    echo $resultStr;
                 }else{
                     echo "Input something...";
                 }
