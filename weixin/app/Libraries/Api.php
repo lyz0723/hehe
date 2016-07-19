@@ -4,8 +4,8 @@
   */
 
 //define your token
-define("TOKEN", "$tokens");
-$wechatObj = new wechatCallbackapiTest();
+
+//$wechatObj = new wechatCallbackapiTest();
 //验证服务器和公众平台建立连接
 //如果已经成功建立连接后把该方法注释
  //$wechatObj->valid();

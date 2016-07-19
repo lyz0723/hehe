@@ -91,31 +91,12 @@ class AccountController extends Controller
 
         $do=$_GET['do'];
        $arr=new We_pub();
-        $tokes=$arr->api($do);
-        //$arr->responseMsg();
-//        $arr->api($do);
+        $tokens=$arr->api($do);
+        define("TOKEN", "$tokens");
       $api=new wechatCallbackapiTest();
 
-        if(isset($_GET["echostr"])) {
-            $echoStr=$_GET["echostr"];
-            $signature = $_GET["signature"];
-            $timestamp = $_GET["timestamp"];
-            $nonce = $_GET["nonce"];
-            $token=$arr->api($do);
-            $tmpArr = array($token, $timestamp, $nonce);
-            sort($tmpArr, SORT_STRING);
-            $tmpStr = implode( $tmpArr );
-            $tmpStr = sha1( $tmpStr );
-            if($tmpStr == $signature){
-                $api->responseMsg();
-                header('content-type:text');
-                echo $echoStr;
-                exit;
-            }else{
-                echo '';
-            }
-        }else{
-            $api->responseMsg();
+        if($api->valid()){
+
         }
 
     }
