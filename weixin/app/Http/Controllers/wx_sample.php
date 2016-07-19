@@ -47,6 +47,8 @@ class wechatCallbackapiTest
                 $toUsername = $postObj->ToUserName;
                 $keyword = trim($postObj->Content);
                 $time = time();
+                //获取用户发送消息的类型
+                $msgType  = $postObj->MsgType;
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
 							<FromUserName><![CDATA[%s]]></FromUserName>
@@ -54,16 +56,22 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";             
-				if(!empty( $keyword ))
+							</xml>";
+            if($msgType=="text"){
+                if(!empty( $keyword ))
                 {
-              		$msgType = "text";
-                	$contentStr = "Welcome to wechat world!";
-                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                	echo $resultStr;
+                    if($keyword=="哈喽"){
+                        $msgType = "text";
+                        $contentStr = "Welcome to wechat world!";
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        echo $resultStr;
+                    }
+                   
                 }else{
-                	echo "Input something...";
+                    echo "Input something...";
                 }
+            }
+
 
         }else {
         	echo "";
