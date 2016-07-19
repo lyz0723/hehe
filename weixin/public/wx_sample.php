@@ -81,9 +81,9 @@ class wechatCallbackapiTest
                         //定义回复类型
                     include"curl.php";
                     //定义URL链接操作
-                    $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info={$keyword}";
+                    $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info=".$keyword;
                     $str=curl($url,$keyword,"POST");
-                    $json=json_decode($str);
+                    $json=json_decode($str,true);
                     //定义回复内容类型
                     $contentStr=$json->text;
                     //格式化字符串
