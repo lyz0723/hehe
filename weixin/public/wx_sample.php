@@ -4,6 +4,15 @@
   */
 
 //define your token
+$do=$_GET['do'];
+$pdo=new PDO('mysql:host=127.0.0.1;dbname=wexin','root','root');
+$pdo->exec('set names utf8');
+$sql="select * from we_pub where p_rand='$do'";
+$arr=$pdo->query($sql);
+$obj=$arr->fetchAll(PDO::FETCH_ASSOC);
+
+$token=$obj[0]['token'];
+
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
 
