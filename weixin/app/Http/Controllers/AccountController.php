@@ -90,9 +90,9 @@ class AccountController extends Controller
 
 
         $do=$_GET['do'];
-        echo $do;die;
        $arr=new We_pub();
         $tokens=$arr->api($do);
+        echo $tokens;die;
         define("TOKEN", "$tokens");
       $api=new wechatCallbackapiTest();
 
