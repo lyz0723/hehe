@@ -91,7 +91,7 @@ class AccountController extends Controller
         $do=$_GET['do'];
        $arr=new We_pub();
         $token=$arr->api($do);
-       $_GET["echostr"];
+       include"wx_sample.php";
 
 
     }
