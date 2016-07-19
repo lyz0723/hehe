@@ -95,7 +95,9 @@ class AccountController extends Controller
         //echo $tokens;die;
         define("TOKEN", "$tokens");
         $wechatObj=new wechatCallbackapiTest();
-        $wechatObj->valid();
+        $as=$wechatObj->valid();
+        echo $as;
+
 
 
     }
