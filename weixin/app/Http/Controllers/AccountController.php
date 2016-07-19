@@ -90,9 +90,9 @@ class AccountController extends Controller
     public function checkSignatures(){
 
     echo $_GET["echostr"];
-        $do=$_GET['do'];
-       $arr=new We_pub();
-        $tokens=$arr->api($do);
+//        $do=$_GET['do'];
+//       $arr=new We_pub();
+//        $tokens=$arr->api($do);
 
 
 
