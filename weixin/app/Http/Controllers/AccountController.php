@@ -89,29 +89,11 @@ class AccountController extends Controller
     //验证服务器地址的有效性
     public function checkSignatures(){
 
-
         $do=$_GET['do'];
        $arr=new We_pub();
-        $wechatObj = new wechatCallbackapiTest();
-        if(isset($_GET["echostr"])){
-            $echoStr = $_GET["echostr"];
-            $signature = $_GET["signature"];
-            $timestamp = $_GET["timestamp"];
-            $nonce = $_GET["nonce"];
-            $token = $arr->api($do);
-            $tmpArr = array($token, $timestamp, $nonce);
-            sort($tmpArr);
-            $tmpStr = implode($tmpArr);
-            $tmpStr = sha1($tmpStr);
-            if($tmpStr == $signature){
-                header('content-type:text');
-                echo $echoStr;
-                exit;
-            }
-        }
-        else{
-            $wechatObj->responseMsg();
-        }
+        $token = $arr->api($do);
+
+
 
     }
 
