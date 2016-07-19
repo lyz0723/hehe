@@ -91,6 +91,7 @@ class AccountController extends Controller
 
         $do=$_GET['do'];
        $arr=new We_pub();
+        $tokes=$arr->api($do);
         //$arr->responseMsg();
 //        $arr->api($do);
       $api=new wechatCallbackapiTest();
