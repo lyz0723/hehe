@@ -90,8 +90,6 @@ class wechatCallbackapiTest
                     //返回数据给客户端
                     echo $result;
 
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType,$str);
-                        echo $resultStr;
                         /*
                          * end 图灵机器人结束
                          * */
