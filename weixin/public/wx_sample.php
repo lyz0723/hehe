@@ -82,7 +82,7 @@ class wechatCallbackapiTest
                     //定义回复内容类型
                     $contentStr=$json['text'];
                     //格式化字符串
-                    $resultStr=sprintf($textTpl,$fromUsername,$toUsername, $contentStr, $time,$msgType);
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }
                 }else{
