@@ -7,6 +7,15 @@
 define("TOKEN", "$token");
 $wechatObj = new wechatCallbackapiTest();
 
+$echoStr = $_GET["echostr"];
+if($echoStr)
+{
+    $wechatObj->valid();
+}
+else
+{
+    $wechatObj->responseMsg();
+}
 
 
 class wechatCallbackapiTest
