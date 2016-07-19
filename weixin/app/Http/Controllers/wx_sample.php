@@ -26,7 +26,7 @@ class wechatCallbackapiTest
 
         //valid signature , option
         if($this->checkSignature()){
-            header('content-type:text');
+            //header('content-type:text');
         	echo $echoStr;
         	exit;
         }
@@ -66,7 +66,7 @@ class wechatCallbackapiTest
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }
-                   
+
                 }else{
                     echo "Input something...";
                 }
