@@ -74,8 +74,15 @@ class wechatCallbackapiTest
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }else{
-                        $contentStr="欢迎关注公众号";
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        //                    $msgType="text";
+                    //定义URL链接操作
+                   $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info=".$keyword;
+                    $str=file_get_contents($url);
+                   $json=json_decode($str,true);
+                    //定义回复内容类型
+                    $contentStr=$json['text'];
+                    //格式化字符串
+                    $resultStr=sprintf($textTpl,$fromUsername,$toUsername, $contentStr, $time,$msgType);
                         echo $resultStr;
                     }
                 }else{
