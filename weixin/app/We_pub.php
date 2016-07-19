@@ -91,7 +91,7 @@ class We_pub extends Model{
                     $result = $this->transmitText($postObj,'已收到您的'.$RX_TYPE.'信息，谢谢！');
                    break;
             }*/
-            echo $result;
+            //echo $result;
         }else {
             echo "adassd";
             exit;
