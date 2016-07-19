@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\We_pub;
+use log;
 use DB;
 use Request;
 use Session;
