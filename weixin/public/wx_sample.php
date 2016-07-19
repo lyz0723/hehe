@@ -84,7 +84,7 @@ class wechatCallbackapiTest
                         $json=file_get_contents($url);
                         $arr=json_decode($json,true);
                     //定义回复内容类型
-                    $contentStr=$arr->text;
+                    $contentStr=$arr['text'];
                     //格式化字符串
                     $result=sprintf($textTpl,$fromUsername,$toUsername, $contentStr, $time,$msgType);
                     //返回数据给客户端
