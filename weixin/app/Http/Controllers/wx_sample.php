@@ -5,8 +5,6 @@
 
 //define your token
 define("TOKEN", "$token");
-define("APPID", "wx31343af4538e0e1a");
-define("APPSECRET", "d4c6f9adb1ff19100889ff702622089c");
 $wechatObj = new wechatCallbackapiTest();
 //验证服务器和公众平台建立连接
 //如果已经成功建立连接后把该方法注释
