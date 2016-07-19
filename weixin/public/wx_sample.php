@@ -5,7 +5,7 @@
 
 //define your token
 $do=$_GET['do'];
-$pdo=new PDO('mysql:host=127.0.0.1;dbname=wexin','root','root');
+$pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
 $pdo->exec('set names utf8');
 $sql="select * from we_pub where p_rand='$do'";
 $arr=$pdo->query($sql);
@@ -75,13 +75,10 @@ class wechatCallbackapiTest
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }
-
                 }else{
                     echo "Input something...";
                 }
             }
-
-
         }else {
         	echo "";
         	exit;
