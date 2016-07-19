@@ -1,5 +1,5 @@
 <?php
-use log;
+
 /**
   * wechat php test
   */
