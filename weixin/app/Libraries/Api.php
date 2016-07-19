@@ -4,29 +4,27 @@
   */
 
 //define your token
-
-//$wechatObj = new wechatCallbackapiTest();
+define("TOKEN", "$tokens");
+$wechatObj = new wechatCallbackapiTest();
 //验证服务器和公众平台建立连接
 //如果已经成功建立连接后把该方法注释
- //$wechatObj->valid();
+ $wechatObj->valid();
 //输出服务器返回的信息
-//$echoStr = $_GET["echostr"];
-//if($echoStr)
-//{
-//    //echo 1;
-//    $wechatObj->valid();
-//}
-//else
-//{
-//    $wechatObj->responseMsg();
-//}
+$echoStr = $_GET["echostr"];
+if($echoStr)
+{
+    //echo 1;
+    $wechatObj->valid();
+}
+else
+{
+    $wechatObj->responseMsg();
+}
 
 class wechatCallbackapiTest
 {
     public function valid()
     {
-        echo "sdfasdfsfsf";die;
-
         $echoStr = $_GET["echostr"];
 
         //valid signature , option
