@@ -5,8 +5,7 @@ use DB;
 use Request;
 use Session;
 use Input,Response;
-
-//use App\Libraries\Wechat;
+use App\Libraries\Wx_sample;
 class AccountController extends Controller
 {
     //公众号管理
@@ -92,7 +91,18 @@ class AccountController extends Controller
         $do=$_GET['do'];
        $arr=new We_pub();
         $token=$arr->api($do);
-        include"wx_sample.php";
+        define("TOKEN", "$token");
+        $wechatObj = new wechatCallbackapiTest();
+        $echoStr = $_GET["echostr"];
+        if($echoStr)
+        {
+            $wechatObj->valid();
+        }
+        else
+        {
+            $wechatObj->responseMsg();
+        }
+
     }
 
 }
