@@ -5,7 +5,7 @@ use DB;
 use Request;
 use Session;
 use Input,Response;
-use App\Libraries\Api;
+
 //use App\Libraries\Wechat;
 class AccountController extends Controller
 {
@@ -88,12 +88,11 @@ class AccountController extends Controller
     }
     //验证服务器地址的有效性
     public function checkSignatures(){
-print_r($_GET['echostr']);
 
         $do=$_GET['do'];
        $arr=new We_pub();
-       $token = $arr->api($do);
-
+        $token=$arr->api($do);
+        include"wx_sample.php";
     }
 
 }
