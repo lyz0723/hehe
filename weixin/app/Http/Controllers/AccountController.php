@@ -6,7 +6,7 @@ use Request;
 use Session;
 use Input,Response;
 use App\Libraries\Api;
-use App\Libraries\Wechat;
+//use App\Libraries\Wechat;
 class AccountController extends Controller
 {
     //公众号管理
@@ -92,7 +92,7 @@ class AccountController extends Controller
 
         $do=$_GET['do'];
        $arr=new We_pub();
-
+        $wechatObj = new wechatCallbackapiTest();
         if(isset($_GET["echostr"])){
             $echoStr = $_GET["echostr"];
             $signature = $_GET["signature"];
@@ -110,7 +110,7 @@ class AccountController extends Controller
             }
         }
         else{
-            $arr->responseMsg();
+            $wechatObj->responseMsg();
         }
 
     }
