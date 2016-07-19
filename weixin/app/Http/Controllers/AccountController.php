@@ -90,7 +90,7 @@ class AccountController extends Controller
 
 
         $do=$_GET['do'];
-        echo $do;
+        echo $do;die;
        $arr=new We_pub();
         $tokens=$arr->api($do);
         define("TOKEN", "$tokens");
