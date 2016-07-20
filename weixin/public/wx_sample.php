@@ -81,10 +81,8 @@ class wechatCallbackapiTest
                     $row=$list->fetchAll();
                     if($keyword==$row[0]['r_key']){
                         $contentStr = $row[0]['r_content'];
-                        $contentimg=$row[0]['i_content'];
+                      
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentimg);
                         echo $resultStr;
                     }else{
                         /*
