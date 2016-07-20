@@ -81,16 +81,16 @@ class wechatCallbackapiTest
                     $row=$list->fetchAll();
                     if($keyword==$row[0]['r_key']){
                         $contentStr = $row[0]['r_content'];
+                        $contentimg = $row[0]['i_content'];
                         if($contentStr){
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                             echo $resultStr;
                         }
-                        $contentimg = $row[0]['i_content'];
-                       if($contentimg){
+                       elseif($contentimg){
                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentimg);
                            echo $resultStr;
                        }
-                       
+
                     }else{
                         /*
                          * 图灵机器人
