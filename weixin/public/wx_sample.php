@@ -5,12 +5,16 @@
 
 //define your token
 $do=$_GET['do'];
+//使用pdo连接数据库
 $pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
+//设置字符集
 $pdo->exec('set names utf8');
+//查询数据库查询
 $sql="select * from we_pub where p_rand='$do'";
+//执行sql语句
 $arr=$pdo->query($sql);
 $obj=$arr->fetchAll(PDO::FETCH_ASSOC);
-
+//获取该公众账号的token值
 $token=$obj[0]['token'];
 
 define("TOKEN", "$token");
@@ -69,21 +73,32 @@ class wechatCallbackapiTest
             if($msgType=="text"){
                 if(!empty( $keyword ))
                 {
-                    if($keyword=="哈喽"){
-                        $contentStr = "Welcome to wechat world!";
+                    $pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
+                    //设置字符集
+                    $pdo->exec('set names utf8');
+                    $sql="select * from we_rule  where r_key='$keyword'";
+                    $list=$pdo->query($sql);
+                    $row=$list->fetchAll();
+                    if($keyword==$row[0]['r_key']){
+                        $contentStr = $row[0]['r_content'];
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }else{
-                        //                    $msgType="text";
-                    //定义URL链接操作
-                   $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info=".$keyword;
-                    $str=file_get_contents($url);
-                   $json=json_decode($str,true);
-                    //定义回复内容类型
-                    $contentStr=$json['text'];
-                    //格式化字符串
-                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
+                        /*
+                         * 图灵机器人
+                         * */
+                            //定义URL链接操作
+                           $url="http://www.tuling123.com/openapi/api?key=1f3a6c1438f6935ea3344fc678cc509c&info=".$keyword;
+                            $str=file_get_contents($url);
+                           $json=json_decode($str,true);
+                            //定义回复内容类型
+                            $contentStr=$json['text'];
+                            //格式化字符串
+                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                                echo $resultStr;
+                        /*
+                         * 图灵结束
+                         * */
                     }
                 }else{
                     echo "Input something...";
