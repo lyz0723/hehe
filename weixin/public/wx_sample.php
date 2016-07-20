@@ -76,11 +76,12 @@ class wechatCallbackapiTest
                     $pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
                     //设置字符集
                     $pdo->exec('set names utf8');
-                    $sql="select * from we_rule r_key='$keyword'";
+                    $sql="select * from we_rule where r_key='$keyword'";
                     $list=$pdo->query($sql);
-                    $row=$list->fetchAll(PDO::FETCH_ASSOC);
+                    $row=$list->fetchAll();
                     if($keyword==$row[0]['r_key']){
                         $contentStr = $row[0]['r_content'];
+
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }else{
