@@ -12,9 +12,11 @@
 */
 
 
-Route::get('/', 'WechatController@index');
-Route::post('/', 'WechatController@index');
-
+//Route::get('/', 'Welcome');
+//Route::post('/', 'WechatController@index');
+Route::get('/', function () {
+  return view('welcome');
+});
 
 
 //后台登录页面
