@@ -78,7 +78,7 @@ class wechatCallbackapiTest
                     $pdo->exec('set names utf8');
                     $sql="select * from we_rule INNER JOIN we_img ON we_rule.r_id=we_img.rid where r_key='$keyword'";
                     $list=$pdo->query($sql);
-                    $row=$list->fetchAll();
+                    $row=$list->fetchAll(PDO::FETCH_ASSOC);
                     if($keyword==$row[0]['r_key']){
                         $contentStr = $row[0]['r_content'];
                         $contentimg = $row[0]['i_content'];
