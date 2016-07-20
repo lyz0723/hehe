@@ -26,12 +26,17 @@ class RuleController extends Controller{
        // echo $name;
         $type=Request::input('module');
         $content= Request::input('content');
-            $key=Request::INPUT('keywords');
+            $key=Request::input('keywords');
+        $title=Request::input('tit');
+        $image=Request::input('pic');
+        $i_content=Request::input('nei');
+        $url=Request::input('lian');
+        //echo $title,$image,$i_content,$url;
 //            $p_id=Session::get('p_id');
 //            $uid=Session::get('uid');
         //实例化对象
         $arr=new We_rule();
-        $arr->add($name,$type,$content,$key);
+        $arr->add($name,$type,$content,$key,$title,$image,$i_content,$url);
         return redirect('rule');
     }
 
