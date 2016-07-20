@@ -75,4 +75,33 @@
 	</form>
 </div>
 
+<script>
+    $("#module").change(function(){
+            var r_type=$(this).val();
+            if(r_type=='2'){
+                $("#huifu").hide();
+                var biao='<tr class="tu"><th><label for="">图文标题</label></th><td><input type="text" class="span6" placeholder="" name="tit[]" value="" /> &nbsp;</td></tr>';
+                var tu='<tr class="tu"><th><label for="">选择图片</label></th><td><input type="file" class="span6" placeholder="" name="pic[]" value="" /> &nbsp;</td></tr>';
+                var nei='<tr class="tu"><th><label for="">图文内容</label></th><td><input type="text" class="span6" placeholder="" name="nei[]" value="" /> &nbsp;</td></tr>';
+                var ur='<tr class="tu"><th><label for="">图文连接</label></th><td><input type="text" class="span6" placeholder="" name="lian[]" value="" /> &nbsp; <a href="javascript:;" title="添加子菜单" class="icon-plus-sign" title="添加菜单"></a></td></tr>';
+                $('#huifu').after(biao+tu+nei+ur);
+            }
+        if(r_type=='1'){
+            $('.tu').remove();
+            $('#huifu').show();
+        }
+        if(r_type=='3'){
+            $('.tu').remove();
+            $('#huifu').hide();
+            var biao='<tr class="tu"><th><label for="">音乐标题</label></th><td><input type="text" class="span6" placeholder="" name="tit[]" value="" /> &nbsp;</td></tr>';
+            var nei='<tr class="tu"><th><label for="">音乐名称</label></th><td><input type="text" class="span6" placeholder="" name="nei[]" value="" /> &nbsp;</td></tr>';
+            var tu='<tr class="tu"><th><label for="">选择音乐</label></th><td><input type="file" class="span6" placeholder="" name="pic[]" value="" /> &nbsp;</td></tr>';
+            $('#huifu').after(biao+nei+tu);
+        }
+        
+    });
+
+</script>
+
+
 @include('admin/common/footer')
