@@ -62,6 +62,7 @@ class wechatCallbackapiTest
                 $time = time();
                 //获取用户发送消息的类型
                 $msgType  = $postObj->MsgType;
+                //回复文本消息
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
 							<FromUserName><![CDATA[%s]]></FromUserName>
@@ -70,6 +71,16 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
+                //回复图片消息
+                $imgTpl="<xml>
+                            <ToUserName><![CDATA[toUser]]></ToUserName>
+                            <FromUserName><![CDATA[fromUser]]></FromUserName>
+                            <CreateTime>12345678</CreateTime>
+                            <MsgType><![CDATA[image]]></MsgType>
+                            <Image>
+                            <MediaId><![CDATA[media_id]]></MediaId>
+                            </Image>
+                        </xml>";
             if($msgType=="text"){
                 if(!empty( $keyword ))
                 {
@@ -79,7 +90,7 @@ class wechatCallbackapiTest
                     $sql="select * from we_rule  where r_key='$keyword'";
                     $list=$pdo->query($sql);
                     $row=$list->fetchAll(PDO::FETCH_ASSOC);
-                    print_r($row);
+                   // print_r($row);
                     if($keyword==$row[0]['r_key']){
                         $contentStr = $row[0]['r_content'];
 
@@ -104,6 +115,22 @@ class wechatCallbackapiTest
                     }
                 }else{
                     echo "Input something...";
+                }
+            }elseif($msgType=="image"){
+                if(!empty($keyword)){
+                    $pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
+                    //设置字符集
+                    $pdo->exec('set names utf8');
+                    $sql="select * from we_rule INNER JOIN we_img ON we_rule.r_id= we_img.rid where r_key='$keyword'";
+                    $list=$pdo->query($sql);
+                    $row=$list->fetchAll(PDO::FETCH_ASSOC);
+                    if($keyword==$row[0]['r_key']){
+                        $contentStr = $row[0]['i_image'];
+
+                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        echo $resultStr;
+                    }
+
                 }
             }
         }else {
