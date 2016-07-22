@@ -97,7 +97,7 @@ class wechatCallbackapiTest
                                 <PicUrl><![CDATA[%s]]></PicUrl>
                                 <Url><![CDATA[CDATA[%s]]></Url>
                                 </item>';
-                        $item= sprintf($str, $row['i_title'], $row['i_content'], $row['i_url']."/".$row['i_image'], $row['i_url']."/".$row['i_image']);
+                        $item= sprintf($str, $row['i_title'], $row['i_content'], "http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/".$row['i_image'], $row['i_url']);
                         $imgTpl = "<xml>
                             <ToUserName><![CDATA[%s]]></ToUserName>
                             <FromUserName><![CDATA[%s]]></FromUserName>
