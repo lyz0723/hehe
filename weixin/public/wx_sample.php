@@ -87,7 +87,7 @@ class wechatCallbackapiTest
 
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }elseif($keyword==$row[0]['r_key']){
+                    }elseif($keyword=="好大的雨"){
                         //定义回复的类型
                         $msgType = "news";
                         $count = 1;
