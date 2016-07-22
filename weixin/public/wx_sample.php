@@ -71,7 +71,16 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-
+                 $imgTpl = "<xml>
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <ArticleCount>%s</ArticleCount>
+                            <Articles>
+                            %s
+                            </Articles>
+                            </xml>";
             if($msgType=="text"){
                 if(!empty( $keyword ))
                 {
@@ -91,25 +100,14 @@ class wechatCallbackapiTest
                         //定义回复的类型
                         $msgType = "news";
                         $count = 1;
-                        $itemTpl='<item>
+                        $str='<item>
                                 <Title><![CDATA[%s]]></Title>
                                 <Description><![CDATA[%s]]></Description>
                                 <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></PicUrl>
                                 <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></Url>
                                 </item>';
-                        $item= sprintf($itemTpl, $row['Title'], $row['Description'], $row['PicUrl'], $row['Url']);
-                        //定义发送图文消息的接口
-                        $imgTpl="<xml>
-                            <ToUserName><![CDATA[%s]]></ToUserName>
-                            <FromUserName><![CDATA[%s]]></FromUserName>
-                            <CreateTime>%s</CreateTime>
-                            <MsgType><![CDATA[%s]]></MsgType>
-                            <ArticleCount>%s</ArticleCount>
-                            <Articles>
-                            $item
-                            </Articles>
-                            </xml>";
-                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $count);
+
+                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $count,$str);
                         echo $resultStr;
                     }
 
