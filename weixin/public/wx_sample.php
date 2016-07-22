@@ -89,15 +89,13 @@ class wechatCallbackapiTest
                         echo $resultStr;
                     }elseif($keyword==$row[0]['r_key']){
                         //定义回复的类型
-                        //文件路径
-                        $url="http://".$_SERVER['HTTP_HOST']."public/uploads/$row[0]['i_image']";
                         $msgType = "news";
                         $count = 1;
                         $str='<item>
                                 <Title><![CDATA[%s]]></Title>
                                 <Description><![CDATA[%s]]></Description>
-                                <PicUrl><![CDATA[$url]]></PicUrl>
-                                <Url><![CDATA[$url]]></Url>
+                                <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></PicUrl>
+                                <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></Url>
                                 </item>';
                         $item= sprintf($str, $row['Title'], $row['Description'], $row['PicUrl'], $row['Url']);
                         $imgTpl = "<xml>
