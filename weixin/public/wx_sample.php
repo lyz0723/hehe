@@ -62,7 +62,7 @@ class wechatCallbackapiTest
                 $time = time();
                 //获取用户发送消息的类型
                 $msgType  = $postObj->MsgType;
-                //回复文本消息
+                 //定义发送文字消息的接口
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
 							<FromUserName><![CDATA[%s]]></FromUserName>
@@ -71,23 +71,14 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-                //回复图片消息
-                $imgTpl="<xml>
-                            <ToUserName><![CDATA[toUser]]></ToUserName>
-                            <FromUserName><![CDATA[fromUser]]></FromUserName>
-                            <CreateTime>12345678</CreateTime>
-                            <MsgType><![CDATA[image]]></MsgType>
-                            <Image>
-                            <MediaId><![CDATA[media_id]]></MediaId>
-                            </Image>
-                        </xml>";
+
             if($msgType=="text"){
                 if(!empty( $keyword ))
                 {
                     $pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
                     //设置字符集
                     $pdo->exec('set names utf8');
-                    $sql="select * from we_rule  where r_key='$keyword'";
+                    $sql="select * from we_rule inner JOIN  we_img ON  we_rule.r_id=we_img.rid where r_key='$keyword'";
                     $list=$pdo->query($sql);
                     $row=$list->fetchAll(PDO::FETCH_ASSOC);
                    // print_r($row);
@@ -96,7 +87,33 @@ class wechatCallbackapiTest
 
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }else{
+                    }elseif($keyword==$row[0]['r_key']){
+                        //定义回复的类型
+                        $msgType = "news";
+                        $count = 1;
+                        $itemTpl='<item>
+                                <Title><![CDATA[%s]]></Title>
+                                <Description><![CDATA[%s]]></Description>
+                                <PicUrl><![CDATA[%s]]></PicUrl>
+                                <Url><![CDATA[%s]]></Url>
+                                </item>';
+                        $item= sprintf($itemTpl, $row['Title'], $row['Description'], $row['PicUrl'], $row['Url']);
+                        //定义发送图文消息的接口
+                        $imgTpl="<xml>
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <ArticleCount>%s</ArticleCount>
+                            <Articles>
+                            $item
+                            </Articles>
+                            </xml>";
+                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $count);
+                        echo $resultStr;
+                    }
+
+                    else{
                         /*
                          * 图灵机器人
                          * */
@@ -115,22 +132,6 @@ class wechatCallbackapiTest
                     }
                 }else{
                     echo "Input something...";
-                }
-            }elseif($msgType=="image"){
-                if(!empty($keyword)){
-                    $pdo=new PDO('mysql:host=127.0.0.1;dbname=weixin','root','root');
-                    //设置字符集
-                    $pdo->exec('set names utf8');
-                    $sql="select * from we_rule INNER JOIN we_img ON we_rule.r_id= we_img.rid where r_key='$keyword'";
-                    $list=$pdo->query($sql);
-                    $row=$list->fetchAll(PDO::FETCH_ASSOC);
-                    if($keyword==$row[0]['r_key']){
-                        $contentStr = "{{URL::asset('/')}}uploads/".$row[0]['i_image'];
-
-                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
-                    }
-
                 }
             }
         }else {
