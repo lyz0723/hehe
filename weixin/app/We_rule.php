@@ -19,10 +19,12 @@ class We_rule extends Model{
            $array1=array(
                'i_title'=>$title,
                'i_image'=>$image,
+
                'i_content'=>$i_content,
                'i_url'=>$url,
                'rid'=>$r_id
            );
+
            $insert=DB::table('we_img')->insert($array1);
        }
         //print_r($insert);
