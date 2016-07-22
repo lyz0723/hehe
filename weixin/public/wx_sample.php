@@ -94,10 +94,10 @@ class wechatCallbackapiTest
                         $str='<item>
                                 <Title><![CDATA[%s]]></Title>
                                 <Description><![CDATA[%s]]></Description>
-                                <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/deTt5gbgmw.jpg]]></PicUrl>
-                                <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/deTt5gbgmw.jpg]]></Url>
+                                <PicUrl><![CDATA[%s]]></PicUrl>
+                                <Url><![CDATA[CDATA[%s]]></Url>
                                 </item>';
-                        $item= sprintf($str, $row['Title'], $row['Description'], $row['PicUrl'], $row['Url']);
+                        $item= sprintf($str, $row['i_title'], $row['i_content'], $row['i_url']."/".$row['i_image'], $row['i_url']."/".$row['i_image']);
                         $imgTpl = "<xml>
                             <ToUserName><![CDATA[%s]]></ToUserName>
                             <FromUserName><![CDATA[%s]]></FromUserName>
