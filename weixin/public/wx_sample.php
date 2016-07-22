@@ -125,7 +125,7 @@ class wechatCallbackapiTest
                     $list=$pdo->query($sql);
                     $row=$list->fetchAll(PDO::FETCH_ASSOC);
                     if($keyword==$row[0]['r_key']){
-                        $contentStr = $row[0]['i_image'];
+                        $contentStr = "{{URL::asset('/')}}uploads/".$row[0]['i_image'];
 
                         $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
