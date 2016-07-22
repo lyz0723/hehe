@@ -92,8 +92,8 @@ class wechatCallbackapiTest
                         $msgType = "news";
                         $count = 1;
                         $str='<item>
-                                <Title><![CDATA[好美啊]]></Title>
-                                <Description><![CDATA[看到你的模样]]></Description>
+                                <Title><![CDATA[%s]]></Title>
+                                <Description><![CDATA[%s]]></Description>
                                 <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></PicUrl>
                                 <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></Url>
                                 </item>';
