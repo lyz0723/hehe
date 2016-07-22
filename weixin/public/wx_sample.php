@@ -96,7 +96,7 @@ class wechatCallbackapiTest
 
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }elseif($keyword=="图片"){
+                    }elseif($keyword=="发图片"){
                         //定义回复的类型
                         $msgType = "news";
                         $count = 1;
