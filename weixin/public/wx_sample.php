@@ -87,15 +87,15 @@ class wechatCallbackapiTest
 
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }elseif($keyword==$row[0]['r_key']){
+                    }elseif($keyword=="图片"){
                         //定义回复的类型
                         $msgType = "news";
                         $count = 1;
                         $itemTpl='<item>
                                 <Title><![CDATA[%s]]></Title>
                                 <Description><![CDATA[%s]]></Description>
-                                <PicUrl><![CDATA[%s]]></PicUrl>
-                                <Url><![CDATA[%s]]></Url>
+                                <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></PicUrl>
+                                <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></Url>
                                 </item>';
                         $item= sprintf($itemTpl, $row['Title'], $row['Description'], $row['PicUrl'], $row['Url']);
                         //定义发送图文消息的接口
