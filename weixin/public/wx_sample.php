@@ -71,16 +71,7 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-                $imgTpl = "<xml>
-                            <ToUserName><![CDATA[%s]]></ToUserName>
-                            <FromUserName><![CDATA[%s]]></FromUserName>
-                            <CreateTime>%s</CreateTime>
-                            <MsgType><![CDATA[%s]]></MsgType>
-                            <ArticleCount>%s</ArticleCount>
-                            <Articles>
-                            %s
-                            </Articles>
-                            </xml>";
+
             if($msgType=="text"){
                 if(!empty( $keyword ))
                 {
@@ -106,8 +97,18 @@ class wechatCallbackapiTest
                                 <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></PicUrl>
                                 <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></Url>
                                 </item>';
-
-                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $count,$str);
+                        $item= sprintf($str, $row['Title'], $row['Description'], $row['PicUrl'], $row['Url']);
+                        $imgTpl = "<xml>
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <ArticleCount>%s</ArticleCount>
+                            <Articles>
+                            $item
+                            </Articles>
+                            </xml>";
+                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $count);
                         echo $resultStr;
                     }
 
