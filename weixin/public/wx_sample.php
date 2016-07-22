@@ -71,7 +71,7 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-                 $imgTpl = "<xml>
+                $imgTpl = "<xml>
                             <ToUserName><![CDATA[%s]]></ToUserName>
                             <FromUserName><![CDATA[%s]]></FromUserName>
                             <CreateTime>%s</CreateTime>
@@ -101,8 +101,8 @@ class wechatCallbackapiTest
                         $msgType = "news";
                         $count = 1;
                         $str='<item>
-                                <Title><![CDATA[%s]]></Title>
-                                <Description><![CDATA[%s]]></Description>
+                                <Title><![CDATA[好美啊]]></Title>
+                                <Description><![CDATA[看到你的模样]]></Description>
                                 <PicUrl><![CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></PicUrl>
                                 <Url><![CDATA[CDATA[http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/YDX3tY4OO9.jpg]]></Url>
                                 </item>';
