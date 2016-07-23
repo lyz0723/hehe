@@ -148,6 +148,9 @@ class wechatCallbackapiTest
     private function getAccesstoken()
     {
         $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.appID.'&secret='.appsecret.'";
+        $file=file_get_contents($url);
+        $data=json_decode($file,true);
+        print_r($data);
     }
 	private function checkSignature()
 	{
