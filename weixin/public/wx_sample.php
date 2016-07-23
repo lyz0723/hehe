@@ -20,7 +20,7 @@ $appID=$obj[0]['appid'];
 $appsecret=$obj[0]['appsecret'];
 define("TOKEN", "$token");
 define("appID", "$appID");
-define("appsecret", "$token");
+define("appsecret", "$appsecret");
 $wechatObj = new wechatCallbackapiTest();
 
 $echoStr = $_GET["echostr"];
