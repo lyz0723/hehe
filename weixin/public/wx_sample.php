@@ -16,8 +16,11 @@ $arr=$pdo->query($sql);
 $obj=$arr->fetchAll(PDO::FETCH_ASSOC);
 //获取该公众账号的token值
 $token=$obj[0]['token'];
-
+$appID=$obj[0]['appid'];
+$appsecret=$obj[0]['appsecret'];
 define("TOKEN", "$token");
+define("appID", "$appID");
+define("appsecret", "$token");
 $wechatObj = new wechatCallbackapiTest();
 
 $echoStr = $_GET["echostr"];
@@ -41,6 +44,7 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             //header('content-type:text');
         	echo $echoStr;
+            echo $this->getAccesstoken();
         	exit;
         }
     }
@@ -87,7 +91,9 @@ class wechatCallbackapiTest
 
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }elseif($keyword==$row[0]['r_key']){
+                    }
+
+                    elseif($keyword==$row[0]['r_key']){
                         //定义回复的类型
                         $msgType = "news";
                         $count = 1;
@@ -138,7 +144,11 @@ class wechatCallbackapiTest
         	exit;
         }
     }
-		
+        //获取access_token
+    private function getAccesstoken()
+    {
+        $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.appID.'&secret='.appsecret.'";
+    }
 	private function checkSignature()
 	{
         // you must define TOKEN by yourself
