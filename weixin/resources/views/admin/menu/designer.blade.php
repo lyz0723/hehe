@@ -188,8 +188,23 @@
 		dat = dat.slice(0,-1);
 		dat += ']';
 		$('#do').val(dat);
-
 		$('#form')[0].submit();
+
+        var data=$("#user").val();
+        $("#di").val(dat);
+//        $('#form')[0].submit();
+        $.post("{{URL('token')}}", { di: data, do: dat },
+                function(data){
+                    // alert(data);
+                    console.log(data);
+                    if(data.errcode=='0'){
+                        alert("修改成功");
+                    }else if(data=='40013'){
+                        alert("您的Appid 或 Appsecret 错误");
+                    }else{
+                        alert("您的公众号API功能未授权");
+                    }
+                },'json');
 	}
 </script>
 <style type="text/css">
@@ -203,7 +218,25 @@
 		<h4>菜单设计器 <small>编辑和设置微信公众号码, 必须是服务号才能编辑自定义菜单。</small></h4>
 		<table class="tb table-striped">
 			<tbody class="mlist">
+            当前APP：
+            <select id="user">
+                <?php
+                $p_id=Session::get('p_id');
+                if($p_id){
+                    //echo $p_id;
+                    $row= DB::table('we_pub')->where('p_id',$p_id)->first();
+                }else{
 
+                }
+
+                ?>
+
+                @if($p_id)
+                        <option value="<?php echo $row->p_id ?>">{{$row->p_name}}</option>
+                @else
+                    <span id="current-account">请切换公众号</span>
+                @endif
+            </select>
 			<tr class="hover" data-do="" data-url="" data-forward="">
 					<td>
 						<div>
@@ -237,6 +270,7 @@
 			<tbody>
 				<tr>
 					<td>
+                        <input type="hidden" name="_token"         value="<?php echo csrf_token() ?>"/>
 						<input type="button" value="保存菜单结构" class="btn btn-primary span3" onclick="saveMenu();"/>
 						<span class="help-block">保存当前菜单结构至公众平台, 由于缓存可能需要在24小时内生效</span>
 					</td>
@@ -251,7 +285,10 @@
 		</table>
 	</div>
 </div>
-<form action="" method="post" id="form"><input id="do" name="do" type="hidden" /><input id="key" name="key" type="hidden"/></form>
+<form action="{{URL('token')}}" method="post" id="form">
+    <input id="do" name="do" type="hidden" />
+    <input id="key" name="key" type="hidden"/>
+</form>
 <div id="dialog" class="modal hide" style="position: absolute">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -271,7 +308,7 @@
 				<span class="help-block">指定点击此菜单时要跳转的链接（注：链接需加http://）</span>
 				<span class="help-block"><strong>注意: 由于接口限制. 如果你没有网页oAuth接口权限, 这里输入链接直接进入微站个人中心时将会有缺陷(有可能获得不到当前访问用户的身份信息. 如果没有oAuth接口权限, 建议你使用图文回复的形式来访问个人中心)</strong></span>
 			</div>
-            <form action="" method="post" id="form1" enctype="multipart/form-data" target="">
+            <form action="{{URL('token')}}" method="post" id="form1" enctype="multipart/form-data" target="">
                 <div id="forward-container" class="hide">
                     <input class="span6" id="ipt-forward" name="ipt-forward" type="text" />
                     <span class="help-block">指定点击此菜单时要执行的操作, 你可以在这里输入关键字, 那么点击这个菜单时就就相当于发送这个内容至微E系统</span>
@@ -285,9 +322,9 @@
                             <th width="100"><label for="">回复类型</label></th>
                             <td>
                                 <select name="module" id="module" class="span5">
-
-                                        <option value=""></option>
-
+                                    @foreach($arr as $val)
+                                        <option value="{{$val->t_id}}">{{$val->t_name}}</option>
+                                      @endforeach
                                 </select>
                             </td>
                         </tr>

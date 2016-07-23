@@ -42,6 +42,10 @@ Route::get('rule','RuleController@index');
 
 //自定义菜单
 Route::get('menu','MenuController@menu');
+
+
+Route::post('token','MenuController@token');
+
 //添加规则
 Route::get('add_rule','RuleController@add_rule');
 //替换左侧菜单栏
