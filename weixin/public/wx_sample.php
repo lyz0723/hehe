@@ -44,7 +44,8 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             //header('content-type:text');
         	echo $echoStr;
-            echo $this->getAccesstoken();
+            //echo $this->getAccesstoken();
+            echo $this->createMenu();
         	exit;
         }
     }
@@ -151,7 +152,70 @@ class wechatCallbackapiTest
         $file=file_get_contents($url);
         $data=json_decode($file,true);
         $Accesstoken=$data['access_token'];
-        echo $Accesstoken;
+       return $Accesstoken;
+    }
+    //创建自定义菜单
+    private function createMenu(){
+        $Accesstoken=$this->getAccesstoken();
+        $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
+        $data='{
+             "button":[
+             {
+                  "type":"click",
+                  "name":"今日歌曲",
+                  "key":"V1001_TODAY_MUSIC"
+            },
+              {
+                   "name":"菜单",
+                   "sub_button":[
+                   {
+                       "type":"view",
+                       "name":"搜索",
+                       "url":"http://www.soso.com/"
+                    },
+                    {
+                       "type":"view",
+                       "name":"视频",
+                       "url":"http://v.qq.com/"
+                    },
+                    {
+                       "type":"click",
+                       "name":"赞一下我们",
+                       "key":"V1001_GOOD"
+                    }]
+               }]
+        }';
+        $this->weixinPost($url,$data,"POST");
+    }
+    //微信POST接值
+    private function weixinPost($url,$data,$method){
+        $ch = curl_init();	 //1.初始化
+        curl_setopt($ch,CURLOPT_URL, $url); //2.请求地址
+        curl_setopt($ch,CURLOPT_CUSTOMREQUEST,$method);//3.请求方式
+        //4.参数如下
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,FALSE);
+        curl_setopt($ch,CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0'); //指定请求方式（浏览器）
+        curl_setopt($ch,CURLOPT_FOLLOWLOCATION,1);
+        curl_setopt($ch,CURLOPT_AUTOREFERER,1);
+        if($method=="POST"){//5.post方式的时候添加数据
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+        }
+//        if($setcooke==true){
+//            //把生成的cookie保存在指定的文件中
+//            curl_setopt($ch, CURLOPT_COOKIEJAR,$cookie_file);
+//        }else{
+//            //直接从文件中读取cookie信息
+//            curl_setopt($ch, CURLOPT_COOKIEFILE,$cookie_file);
+//        }
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+        $tmpInfo = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        return $tmpInfo;
     }
 	private function checkSignature()
 	{
