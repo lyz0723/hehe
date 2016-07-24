@@ -21,14 +21,14 @@ class MenuController extends Controller{
         $id=$arr['id'];
         // var_dump($arr);die;
         $data= DB::table('we_pub')->where('p_id', $id)->first();
-         print_r($data);die();
+         //print_r($data);die();
         $appid=$data->appid;
         $appsecret=$data->appsecret;
         $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
         $file=file_get_contents($url);
         $data=json_decode($file,true);
         $Accesstoken=$data['access_token'];
-
+        echo $Accesstoken;die;
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
         $data=$arr['aa'];
         $this->weixinPost($url,$data,"POST");
