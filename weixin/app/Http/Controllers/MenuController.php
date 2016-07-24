@@ -15,6 +15,8 @@ class MenuController extends Controller{
     public function token(){
 
        $arr=Request::all();
+        $data=$arr->aa;
+        echo $data;die;
         $id=$arr['id'];
         // var_dump($arr);die;
         $data1= DB::table('we_pub')->where('p_id', $id)->first();
