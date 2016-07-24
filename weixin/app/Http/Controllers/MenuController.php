@@ -28,7 +28,7 @@ class MenuController extends Controller{
         $file=file_get_contents($url);
         $data=json_decode($file,true);
         $Accesstoken=$data['access_token'];
-        //echo $Accesstoken;die;
+        echo $Accesstoken;die;
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
         $data=$arr['aa'];
         $this->weixinPost($url,"POST",$data);
