@@ -31,7 +31,7 @@ class MenuController extends Controller{
         echo $Accesstoken;die;
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
         $data=$arr['aa'];
-        $this->weixinPost($url,$data,"POST");
+        $this->weixinPost($url,"POST",$data);
     }
 
     //微信curl提交
