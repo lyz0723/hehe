@@ -15,7 +15,7 @@ class MenuController extends Controller{
     public function token(){
 
        $arr=Request::all();
-        $data=$arr->aa;
+        $data=$arr['aa'];
         echo $data;die;
         $id=$arr['id'];
         // var_dump($arr);die;
