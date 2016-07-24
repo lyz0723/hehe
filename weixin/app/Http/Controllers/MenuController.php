@@ -15,9 +15,6 @@ class MenuController extends Controller{
     public function token(){
 
        $arr=Request::all();
-//        print_r($arr);die;
-        // print_r($arr);die();
-        // var_dump($arr['do']);
         $id=$arr['id'];
         // var_dump($arr);die;
         $data= DB::table('we_pub')->where('p_id', $id)->first();
@@ -30,7 +27,7 @@ class MenuController extends Controller{
         $Accesstoken=$data['access_token'];
         echo $Accesstoken;die;
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
-        $data=$arr['aa'];
+        $data=$arr->aa;
         $this->weixinPost($url,"POST",$data);
     }
 
