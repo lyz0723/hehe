@@ -24,7 +24,7 @@ class MenuController extends Controller{
          //print_r($data);die();
         $appid=$data->appid;
         $appsecret=$data->appsecret;
-        $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+        $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret."";
         $file=file_get_contents($url);
         $data=json_decode($file,true);
         $Accesstoken=$data['access_token'];
