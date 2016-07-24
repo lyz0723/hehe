@@ -187,15 +187,18 @@
 		}
 		dat = dat.slice(0,-1);
 		dat += ']';
-		$('#do').val(dat);
-		$('#form')[0].submit();
-
-        var data=$("#user").val();
+//		var aa = $('#do').val(dat);
+        var dats=('{"button":'+dat+"}");
+        $('#do').val(dats);
+        $('#key').val(dat);
+//		$('#form').submit();
+        var id=$("#user").val();
+        var _token=$("#_token").val();
+        var data={'id':id,'_token':_token,'aa':dats};
         $("#di").val(dat);
-//        $('#form')[0].submit();
-        $.post("{{URL('token')}}", { di: data, do: dat },
+        //$('#form')[0].submit();
+        $.post("{{URL('token')}}",data,
                 function(data){
-                    // alert(data);
                     console.log(data);
                     if(data.errcode=='0'){
                         alert("修改成功");
@@ -237,6 +240,7 @@
                     <span id="current-account">请切换公众号</span>
                 @endif
             </select>
+
 			<tr class="hover" data-do="" data-url="" data-forward="">
 					<td>
 						<div>
@@ -270,7 +274,7 @@
 			<tbody>
 				<tr>
 					<td>
-                        <input type="hidden" name="_token"         value="<?php echo csrf_token() ?>"/>
+                        <input type="hidden" name="_token"    id="_token"     value="<?php echo csrf_token() ?>"/>
 						<input type="button" value="保存菜单结构" class="btn btn-primary span3" onclick="saveMenu();"/>
 						<span class="help-block">保存当前菜单结构至公众平台, 由于缓存可能需要在24小时内生效</span>
 					</td>
@@ -286,6 +290,7 @@
 	</div>
 </div>
 <form action="{{URL('token')}}" method="post" id="form">
+    <input type="hidden" name="_token"    id="_token"     value="<?php echo csrf_token() ?>"/>
     <input id="do" name="do" type="hidden" />
     <input id="key" name="key" type="hidden"/>
 </form>
@@ -309,6 +314,7 @@
 				<span class="help-block"><strong>注意: 由于接口限制. 如果你没有网页oAuth接口权限, 这里输入链接直接进入微站个人中心时将会有缺陷(有可能获得不到当前访问用户的身份信息. 如果没有oAuth接口权限, 建议你使用图文回复的形式来访问个人中心)</strong></span>
 			</div>
             <form action="{{URL('token')}}" method="post" id="form1" enctype="multipart/form-data" target="">
+                <input type="hidden" name="_token"    id="_token"     value="<?php echo csrf_token() ?>"/>
                 <div id="forward-container" class="hide">
                     <input class="span6" id="ipt-forward" name="ipt-forward" type="text" />
                     <span class="help-block">指定点击此菜单时要执行的操作, 你可以在这里输入关键字, 那么点击这个菜单时就就相当于发送这个内容至微E系统</span>
@@ -396,6 +402,7 @@
             }
         });
         $('#btna').click(function(){
+
             if($(':file')[0]!=undefined){
                 var num=parseInt($(':file')[0].files[0].size);
                 var max=parseInt(6291456);

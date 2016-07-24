@@ -12,11 +12,13 @@ class MenuController extends Controller{
 
 
 
-    public function getAccesstoken(){
+    public function token(){
+
        $arr=Request::all();
+//        print_r($arr);die;
         // print_r($arr);die();
         // var_dump($arr['do']);
-        $id=$arr['di'];
+        $id=$arr['id'];
         // var_dump($arr);die;
         $data= DB::table('we_pub')->where('p_id', $id)->first();
         // print_r($data);die();
@@ -28,7 +30,7 @@ class MenuController extends Controller{
         $Accesstoken=$data['access_token'];
 
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
-        $data=$arr['do'];
+        $data=$arr['aa'];
         $this->weixinPost($url,$data,"POST");
     }
 
