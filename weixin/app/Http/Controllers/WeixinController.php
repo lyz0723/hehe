@@ -14,6 +14,28 @@ class WeixinController extends Controller
         $res = json_decode($res, true);
 
         $token = $res['access_token'];
+        //临时二维码
+        $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
+        $postArr = array(
+            'expire_seconds' => 604800, // 24*60*60*7
+            'action_name'    => 'QR_SCENE',
+            'action_info'    => array(
+                'scene' => array('scene_id' => 2000),
+            ),
+        );
+        $postJson = json_encode( $postArr );
+        $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
+        // 获取ticket
+        $ticket   = $res['ticket'];
+        $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".$ticket;
+        echo '临时二维码';
+        echo "<img src='".$url."'>";die;
+
+
+
+
+
+
            //获取jsapi_ticket
         $url="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$token&type=jsapi";
         $file=file_get_contents($url);
@@ -44,6 +66,33 @@ class WeixinController extends Controller
             "rawString" => $string
         );
         return view('admin/weixin/weixin',['signPackage'=>$signPackage]);
+    }
+
+    //curl 的POST
+    function http_curl($url, $type = 'get', $res = 'json', $arr = ''){
+        // 1. 初始化 curl
+        $ch = curl_init();
+        // 2. 设置 curl 参数
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        if ( $type == 'post') {
+            curl_setopt($ch, CURLOPT_POST, $url);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $arr);
+        }
+        // 3. 采集
+        $output = curl_exec( $ch );
+        // 4. 关闭
+        //curl_close( $ch );
+        if ( $res == 'json' ) {
+            if ( curl_errno( $ch ) ) {
+                // 请求失败
+                return curl_error( $ch );
+            } else {
+                // 请求成功
+                return json_decode( $output, true );
+            }
+        }
+
     }
 
 }
