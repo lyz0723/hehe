@@ -5,7 +5,6 @@
     <title></title>
 </head>
 <body>
-<?php echo $signPackage["appId"];?>
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
@@ -28,29 +27,20 @@
         signature: '<?php echo $signPackage["signature"];?>',
         jsApiList: [
             // 所有要调用的 API 都要加到这个列表中
-            onMenuShareTimeline,
-            onMenuShareAppMessage
+            scanQRCode
         ]
     });
     wx.ready(function () {
         // 在这里调用 API
-        wx.onMenuShareTimeline({
+        wx.scanQRCode({
 
-            title: '斑马斑马', // 分享标题
+            needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
 
-            link: '', // 分享链接
+            scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
 
-            imgUrl: '', // 分享图标
+            success: function (res) {
 
-            success: function () {
-
-                // 用户确认分享后执行的回调函数
-
-            },
-
-            cancel: function () {
-
-                // 用户取消分享后执行的回调函数
+                var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
 
             }
 
