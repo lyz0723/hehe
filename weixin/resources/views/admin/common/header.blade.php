@@ -13,6 +13,7 @@
     <script type="text/javascript" src="{{URL::asset('/')}}script/common.js?v={TIMESTAMP}"></script>
     <script type="text/javascript" src="{{URL::asset('/')}}script/emotions.js"></script>
 
+
     <!--[if IE 7]>
     <link type="text/css" rel="stylesheet" href="{{URL::asset('/')}}style/font-awesome-ie7.min.css">
     <![endif]-->

@@ -60,5 +60,3 @@ Route::get('checkSignatures','AccountController@checkSignatures');
 /*
  * 微信jsSDK
  * */
-//微信收货地址
-Route::get('we_Receipt','WeinxinController@receipt');
