@@ -57,6 +57,5 @@ Route::post('add_text','RuleController@add_text');
 //验证服务器地址的有效性
 Route::get('checkSignatures','AccountController@checkSignatures');
 
-/*
- * 微信jsSDK
- * */
+//如何在网页中通过js代码将内容分享到朋友圈
+Route::get('weixin','WeixinController@index');
