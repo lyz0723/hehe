@@ -56,3 +56,9 @@ Route::get('del','AccountController@del');
 Route::post('add_text','RuleController@add_text');
 //验证服务器地址的有效性
 Route::get('checkSignatures','AccountController@checkSignatures');
+
+/*
+ * 微信jsSDK
+ * */
+//微信收货地址
+Route::get('we_Receipt','WeinxinController@receipt');
