@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-class WechatController extends Controller
+class WeixinController extends Controller
 {
     public function index(){
         echo $this->wx_get_token();
