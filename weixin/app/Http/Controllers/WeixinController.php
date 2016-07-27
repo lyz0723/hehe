@@ -27,7 +27,7 @@ class WeixinController extends Controller
         //          );
         // 单文本
         $array = array(
-            'touser'  => $appId, // 微信用户的 openid
+            'touser'  => 'wx31343af4538e0e1a', // 微信用户的 openid
             'text'    => array( 'content' => 'Biubiubiu~~ is very heppy!' ), // 文本内容
             'msgtype' => 'text', // 消息类型
         );
