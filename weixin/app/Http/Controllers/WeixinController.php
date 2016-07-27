@@ -95,6 +95,7 @@ class WeixinController extends Controller
         $appsecret = "b6ace35d7f3820f253b6c770d6a028e4";
         //接受网页授权的code值
         $code=Request::input('code');
+        echo $code;die;
         //获取微信网页的Access_token;
         $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$appsecret."&code=".$code."&grant_type=authorization_code";
         $res       = $this -> http_curl($url, 'get');
