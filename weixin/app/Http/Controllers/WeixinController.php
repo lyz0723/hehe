@@ -17,40 +17,40 @@ class WeixinController extends Controller
 
         $token = $res['access_token'];
         //临时二维码
-        
-        $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
-        $postArr = array(
-            'expire_seconds' => 604800, // 24*60*60*7
-            'action_name'    => 'QR_SCENE',
-            'action_info'    => array(
-                'scene' => array('scene_id' => 2000),
-            ),
-        );
-        $postJson = json_encode( $postArr );
-        $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
-        // 获取ticket
-        $ticket   = $res['ticket'];
-        $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".$ticket;
-        echo '临时二维码';
-        echo "<img src='".$url."'>";die;
+
+//        $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
+//        $postArr = array(
+//            'expire_seconds' => 604800, // 24*60*60*7
+//            'action_name'    => 'QR_SCENE',
+//            'action_info'    => array(
+//                'scene' => array('scene_id' => 2000),
+//            ),
+//        );
+//        $postJson = json_encode( $postArr );
+//        $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
+//        // 获取ticket
+//        $ticket   = $res['ticket'];
+//        $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".$ticket;
+//        echo '临时二维码';
+//        echo "<img src='".$url."'>";die;
 
         //永久二维码
 
-        $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
-        $postArr = array(
-
-            'action_name'    => 'QR_LIMIT_SCENE',
-            'action_info'    => array(
-                'scene' => array('scene_id' => 3000),
-            ),
-        );
-        $postJson = json_encode( $postArr );
-        $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
-        // 获取ticket
-        $ticket   = $res['ticket'];
-        $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
-        echo '永久二维码';
-        echo "<img src='".$url."'>";
+//        $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
+//        $postArr = array(
+//
+//            'action_name'    => 'QR_LIMIT_SCENE',
+//            'action_info'    => array(
+//                'scene' => array('scene_id' => 3000),
+//            ),
+//        );
+//        $postJson = json_encode( $postArr );
+//        $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
+//        // 获取ticket
+//        $ticket   = $res['ticket'];
+//        $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
+//        echo '永久二维码';
+//        echo "<img src='".$url."'>";
 
 
         //微信网页授权
@@ -64,6 +64,9 @@ class WeixinController extends Controller
         $data=json_decode($file,true);
 
         $jsapi_ticket=$data['ticket'];
+        //扫描二维码图片
+        $url="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=". $jsapi_ticket;
+        echo $url;die;
         //生成签名随机字符串
         $length=16;
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
