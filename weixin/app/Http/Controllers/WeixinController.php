@@ -17,25 +17,6 @@ class WeixinController extends Controller
 
         $token = $res['access_token'];
         //群发接口
-        // 2. 组装群发接口 array
-        $url   = "https://api.weixin.qq.com/cgi-bin/message/mass/preview?access_token=".$token;
-        // 3. 将 array -> json
-        // $array = array(
-        //            'touser' => 'oG_Z6xBI61d3_tYpxOAOdTzgGjX0',
-        //            'mpnews' => array( 'media_id' => '123dsdajkasd231jhksad' ),
-        //            'msgtype' => 'mpnews',
-        //          );
-        // 单文本
-        $array = array(
-            'touser'  => 'wx31343af4538e0e1a', // 微信用户的 openid
-            'text'    => array( 'content' => 'Biubiubiu~~ is very heppy!' ), // 文本内容
-            'msgtype' => 'text', // 消息类型
-        );
-        // 4. 调用 curl
-        $postJson = json_encode( $array );
-        $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
-        var_dump( $res );
-        die;
 
 
         //临时二维码

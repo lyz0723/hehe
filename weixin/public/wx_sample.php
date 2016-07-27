@@ -53,51 +53,9 @@ class wechatCallbackapiTest
     public function responseMsg()
     {
         // 获取微信推送过来post数据（xml格式）
-		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];// 处理消息类型，并设置回复类型
-        $postObj = simplexml_load_string( $postStr );
-        // 扫码 推送
-        if ( strtolower($postObj -> Event) == 'scan' ) {
-            // 临时二维码
-            if ( $postObj -> EventKey == 2000 ) {
-                $tmp = '欢迎使用临时二维码 再次关注 勿忘初心丶funs';
-            }
-            // 永久二维码
-            if ( $postObj -> EventKey == 3000 ) {
-                $tmp = '欢迎使用永久二维码 再次关注 勿忘初心丶funs';
-            }
-            $toUser   = $postObj -> FromUserName;
-            $fromUser = $postObj -> ToUserName;
-            $arr      = array(
-                array(
-                    'title'       => $tmp,
-                    'description' => '欢迎你使用勿忘初心丶funs',
-                    'picUrl'      => 'http://img0.imgtn.bdimg.com/it/u=3480443286,3729707680&fm=206&gp=0.jpg',
-                    'url'         => 'http://www.biubiubiu.pub',
-                ),
-            );
-            $template = "<xml>
-                            <ToUserName><![CDATA[%s]]></ToUserName>
-                            <FromUserName><![CDATA[%s]]></FromUserName>
-                            <CreateTime>%s</CreateTime>
-                            <MsgType><![CDATA[%s]]></MsgType>
-                            <ArticleCount>". count($arr) ."</ArticleCount>
-                            <Articles>";
-            foreach ($arr as $k => $v) {
-                $template .="<item>
-                            <Title><![CDATA[". $v['title'] ."]]></Title>
-                            <Description><![CDATA[". $v['description'] ."]]></Description>
-                            <PicUrl><![CDATA[". $v['picUrl'] ."]]></PicUrl>
-                            <Url><![CDATA[". $v['url'] ."]]></Url>
-                            </item>";
-            }
-            $template .="</Articles>
-                            </xml>";
+		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
-            $info     = sprintf($template, $toUser, $fromUser, time(), 'news' );
-            echo $info;
-        }
-
-        //extract post data
+      	//extract post data
 		if (!empty($postStr)){
                 /* libxml_disable_entity_loader is to prevent XML eXternal Entity Injection,
                    the best way is to check the validity of xml by yourself */
@@ -109,6 +67,37 @@ class wechatCallbackapiTest
                 $time = time();
                 //获取用户发送消息的类型
                 $msgType  = $postObj->MsgType;
+
+            $token=$this->getAccesstoken();
+            // 2. 组装群发接口 array
+            $url   = "https://api.weixin.qq.com/cgi-bin/message/mass/preview?access_token=".$token;
+            // 3. 将 array -> json
+            // $array = array(
+            //            'touser' => 'oG_Z6xBI61d3_tYpxOAOdTzgGjX0',
+            //            'mpnews' => array( 'media_id' => '123dsdajkasd231jhksad' ),
+            //            'msgtype' => 'mpnews',
+            //          );
+            // 单文本
+            $array = array(
+                'touser'  => $fromUsername, // 微信用户的 openid
+                'text'    => array( 'content' => 'Biubiubiu~~ is very heppy!' ), // 文本内容
+                'msgtype' => 'text', // 消息类型
+            );
+            // 4. 调用 curl
+            $postJson = json_encode( $array );
+            $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
+            var_dump( $res );
+            die;
+
+
+
+
+
+
+
+
+
+
                  //定义发送文字消息的接口
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
