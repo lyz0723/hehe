@@ -85,7 +85,7 @@ class wechatCallbackapiTest
             );
             // 4. 调用 curl
             $postJson = json_encode( $array );
-            $res      = $this -> http_curl( $url, 'post', 'json', $postJson );
+            $res      = $this -> weixinPost($url,$postJson,"POST");
             var_dump( $res );
             die;
 
