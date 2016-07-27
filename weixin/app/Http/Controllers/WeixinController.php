@@ -9,8 +9,6 @@ class WeixinController extends Controller
 {
 
     function index() {
-        //接受网页授权的code值
-        @$code=Request::input('code');
         $appId="wx9036c924e93284c6";
         $appsecret = "b6ace35d7f3820f253b6c770d6a028e4";
            //获取Access_token值
@@ -56,20 +54,10 @@ class WeixinController extends Controller
         */
 
         //微信网页授权
-        $redirect_uri = urlencode( "http://120.25.150.44/liyanzhao/hehe/weixin/public/weixin" );
+        $redirect_uri = urlencode( "http://120.25.150.44/liyanzhao/hehe/weixin/public/shouquan" );
         $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appId."&redirect_uri=".$redirect_uri."&response_type=code&scope=SCOPE&state=123#wechat_redirect";
-        $file=file_get_contents($url);
-        echo $file;die;
         header( 'location:'. $url);
-        //获取微信网页的Access_token;
-        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$redirect_uri."&code=".$code."&grant_type=authorization_code";
-        $res       = $this -> http_curl($url, 'get');
-        $access_token=$res['access_token'];
-        $oppenid=$res['openid'];
-        //拉去用户信息
-        $url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$oppenid."&lang=zh_CN ";
-        $data=$this -> http_curl($url, 'get');
-        print_r($data);
+
            //获取jsapi_ticket
         $url="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$token&type=jsapi";
         $file=file_get_contents($url);
@@ -101,7 +89,22 @@ class WeixinController extends Controller
         );
         return view('admin/weixin/weixin',['signPackage'=>$signPackage]);
     }
-
+    //
+    public function shouquan(){
+        $appId="wx9036c924e93284c6";
+        $appsecret = "b6ace35d7f3820f253b6c770d6a028e4";
+        //接受网页授权的code值
+        $code=Request::input('code');
+        //获取微信网页的Access_token;
+        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$appsecret."&code=".$code."&grant_type=authorization_code";
+        $res       = $this -> http_curl($url, 'get');
+        $access_token=$res['access_token'];
+        $oppenid=$res['openid'];
+        //拉去用户信息
+        $url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$oppenid."&lang=zh_CN ";
+        $data=$this -> http_curl($url, 'get');
+        print_r($data);
+    }
     //curl 的POST
     function http_curl($url, $type = 'get', $res = 'json', $arr = ''){
         // 1. 初始化 curl
