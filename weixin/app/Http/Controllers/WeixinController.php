@@ -97,14 +97,14 @@ class WeixinController extends Controller
         $code=Request::input('code');
         echo $code;die;
         //获取微信网页的Access_token;
-        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$appsecret."&code=".$code."&grant_type=authorization_code";
-        $res       = $this -> http_curl($url, 'get');
-        $access_token=$res['access_token'];
-        $oppenid=$res['openid'];
-        //拉去用户信息
-        $url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$oppenid."&lang=zh_CN ";
-        $data=$this -> http_curl($url, 'get');
-        print_r($data);
+//        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$appsecret."&code=".$code."&grant_type=authorization_code";
+//        $res       = $this -> http_curl($url, 'get');
+//        $access_token=$res['access_token'];
+//        $oppenid=$res['openid'];
+//        //拉去用户信息
+//        $url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$oppenid."&lang=zh_CN ";
+//        $data=$this -> http_curl($url, 'get');
+//        print_r($data);
     }
     //curl 的POST
     function http_curl($url, $type = 'get', $res = 'json', $arr = ''){
