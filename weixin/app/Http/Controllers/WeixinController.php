@@ -58,11 +58,12 @@ class WeixinController extends Controller
         //微信网页授权
         $redirect_uri = urlencode( "http://120.25.150.44/liyanzhao/hehe/weixin/public/weixin" );
         $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appId."&redirect_uri=".$redirect_uri."&response_type=code&scope=SCOPE&state=123#wechat_redirect";
+        $file=file_get_contents($url);
+        echo $file;die;
         header( 'location:'. $url);
         //获取微信网页的Access_token;
         $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$redirect_uri."&code=".$code."&grant_type=authorization_code";
         $res       = $this -> http_curl($url, 'get');
-        print_r($res);die;
         $access_token=$res['access_token'];
         $oppenid=$res['openid'];
         //拉去用户信息
