@@ -44,7 +44,7 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             //header('content-type:text');
         	echo $echoStr;
-            //echo $this->getAccesstoken();
+            echo $this->getAccesstoken();
             echo $this->createMenu();
         	exit;
         }
@@ -68,8 +68,6 @@ class wechatCallbackapiTest
                 //获取用户发送消息的类型
                 $msgType  = $postObj->MsgType;
 
-            $token=$this->getAccesstoken();
-            echo $token;
 
 
 
