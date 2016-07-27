@@ -52,10 +52,52 @@ class wechatCallbackapiTest
 
     public function responseMsg()
     {
-		//get post data, May be due to the different environments
-		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+        // 获取微信推送过来post数据（xml格式）
+		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];// 处理消息类型，并设置回复类型
+        $postObj = simplexml_load_string( $postStr );
+        // 扫码 推送
+        if ( strtolower($postObj -> Event) == 'scan' ) {
+            // 临时二维码
+            if ( $postObj -> EventKey == 2000 ) {
+                $tmp = '欢迎使用临时二维码 再次关注 勿忘初心丶funs';
+            }
+            // 永久二维码
+            if ( $postObj -> EventKey == 3000 ) {
+                $tmp = '欢迎使用永久二维码 再次关注 勿忘初心丶funs';
+            }
+            $toUser   = $postObj -> FromUserName;
+            $fromUser = $postObj -> ToUserName;
+            $arr      = array(
+                array(
+                    'title'       => $tmp,
+                    'description' => '欢迎你使用勿忘初心丶funs',
+                    'picUrl'      => 'http://img0.imgtn.bdimg.com/it/u=3480443286,3729707680&fm=206&gp=0.jpg',
+                    'url'         => 'http://www.biubiubiu.pub',
+                ),
+            );
+            $template = "<xml>
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <ArticleCount>". count($arr) ."</ArticleCount>
+                            <Articles>";
+            foreach ($arr as $k => $v) {
+                $template .="<item>
+                            <Title><![CDATA[". $v['title'] ."]]></Title>
+                            <Description><![CDATA[". $v['description'] ."]]></Description>
+                            <PicUrl><![CDATA[". $v['picUrl'] ."]]></PicUrl>
+                            <Url><![CDATA[". $v['url'] ."]]></Url>
+                            </item>";
+            }
+            $template .="</Articles>
+                            </xml>";
 
-      	//extract post data
+            $info     = sprintf($template, $toUser, $fromUser, time(), 'news' );
+            echo $info;
+        }
+
+        //extract post data
 		if (!empty($postStr)){
                 /* libxml_disable_entity_loader is to prevent XML eXternal Entity Injection,
                    the best way is to check the validity of xml by yourself */
@@ -91,31 +133,6 @@ class wechatCallbackapiTest
                         $contentStr = $row[0]['r_content'];
 
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
-                    }
-
-                    elseif($keyword==$row[0]['r_key']){
-                        //定义回复的类型
-                        $msgType = "news";
-                        $count = 1;
-                        $str='<item>
-                                <Title><![CDATA[%s]]></Title>
-                                <Description><![CDATA[%s]]></Description>
-                                <PicUrl><![CDATA[%s]]></PicUrl>
-                                <Url><![CDATA[CDATA[%s]]></Url>
-                                </item>';
-                        $item= sprintf($str, $row['i_title'], $row['i_content'], "http://120.25.150.44/liyanzhao/hehe/weixin/public/uploads/".$row['i_image'], $row['i_url']);
-                        $imgTpl = "<xml>
-                            <ToUserName><![CDATA[%s]]></ToUserName>
-                            <FromUserName><![CDATA[%s]]></FromUserName>
-                            <CreateTime>%s</CreateTime>
-                            <MsgType><![CDATA[%s]]></MsgType>
-                            <ArticleCount>%s</ArticleCount>
-                            <Articles>
-                            $item
-                            </Articles>
-                            </xml>";
-                        $resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time, $msgType, $count);
                         echo $resultStr;
                     }
 
@@ -155,38 +172,7 @@ class wechatCallbackapiTest
        return $Accesstoken;
     }
     //创建自定义菜单
-    private function createMenu(){
-        $Accesstoken=$this->getAccesstoken();
-        $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Accesstoken;
-        $data='{
-             "button":[
-             {
-                  "type":"click",
-                  "name":"今日歌曲",
-                  "key":"V1001_TODAY_MUSIC"
-            },
-              {
-                   "name":"菜单",
-                   "sub_button":[
-                   {
-                       "type":"view",
-                       "name":"搜索",
-                       "url":"http://www.soso.com/"
-                    },
-                    {
-                       "type":"view",
-                       "name":"视频",
-                       "url":"http://v.qq.com/"
-                    },
-                    {
-                       "type":"click",
-                       "name":"赞一下我们",
-                       "key":"V1001_GOOD"
-                    }]
-               }]
-        }';
-        $this->weixinPost($url,$data,"POST");
-    }
+
     //微信POST接值
     private function weixinPost($url,$data,$method){
         $ch = curl_init();	 //1.初始化

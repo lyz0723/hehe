@@ -17,7 +17,7 @@ class WeixinController extends Controller
 
         $token = $res['access_token'];
         //临时二维码
-        /*
+        
         $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
         $postArr = array(
             'expire_seconds' => 604800, // 24*60*60*7
@@ -33,9 +33,9 @@ class WeixinController extends Controller
         $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".$ticket;
         echo '临时二维码';
         echo "<img src='".$url."'>";die;
-        */
+
         //永久二维码
-        /*
+
         $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
         $postArr = array(
 
@@ -51,12 +51,12 @@ class WeixinController extends Controller
         $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
         echo '永久二维码';
         echo "<img src='".$url."'>";
-        */
+
 
         //微信网页授权
-        $redirect_uri = urlencode( "http://120.25.150.44/liyanzhao/hehe/weixin/public/shouquan" );
-        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appId."&redirect_uri=".$redirect_uri."&response_type=code&scope=SCOPE&state=123#wechat_redirect";
-        header( 'location:'. $url);
+//        $redirect_uri = urlencode( "http://120.25.150.44/liyanzhao/hehe/weixin/public/shouquan" );
+//        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appId."&redirect_uri=".$redirect_uri."&response_type=code&scope=SCOPE&state=123#wechat_redirect";
+//        header( 'location:'. $url);
 
            //获取jsapi_ticket
         $url="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$token&type=jsapi";
@@ -90,13 +90,12 @@ class WeixinController extends Controller
         return view('admin/weixin/weixin',['signPackage'=>$signPackage]);
     }
     //
-    public function shouquan(){
-        $appId="wx9036c924e93284c6";
-        $appsecret = "b6ace35d7f3820f253b6c770d6a028e4";
-        //接受网页授权的code值
-        $code=Request::input('code');
-        echo $code;die;
-        //获取微信网页的Access_token;
+//    public function shouquan(){
+//        $appId="wx9036c924e93284c6";
+//        $appsecret = "b6ace35d7f3820f253b6c770d6a028e4";
+//        //接受网页授权的code值
+//        $code=Request::input('code');
+//        //获取微信网页的Access_token;
 //        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$appsecret."&code=".$code."&grant_type=authorization_code";
 //        $res       = $this -> http_curl($url, 'get');
 //        $access_token=$res['access_token'];
@@ -105,7 +104,7 @@ class WeixinController extends Controller
 //        $url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$oppenid."&lang=zh_CN ";
 //        $data=$this -> http_curl($url, 'get');
 //        print_r($data);
-    }
+//    }
     //curl 的POST
     function http_curl($url, $type = 'get', $res = 'json', $arr = ''){
         // 1. 初始化 curl
