@@ -1,16 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use Request;
 
+use Input,Response;
 
 class WeixinController extends Controller
 {
 
     function index() {
-
+        //接受网页授权的code值
+        @$code=Request::input('code');
         $appId="wx9036c924e93284c6";
+        $appsecret = "b6ace35d7f3820f253b6c770d6a028e4";
            //获取Access_token值
-        $res = file_get_contents("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appId&secret=b6ace35d7f3820f253b6c770d6a028e4");
+        $res = file_get_contents("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appId&secret=$appsecret");
         $res = json_decode($res, true);
 
         $token = $res['access_token'];
@@ -33,6 +37,7 @@ class WeixinController extends Controller
         echo "<img src='".$url."'>";die;
         */
         //永久二维码
+        /*
         $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$token;
         $postArr = array(
 
@@ -48,10 +53,21 @@ class WeixinController extends Controller
         $url      = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
         echo '永久二维码';
         echo "<img src='".$url."'>";
+        */
 
-
-
-
+        //微信网页授权
+        $redirect_uri = urlencode( "http://120.25.150.44/liyanzhao/hehe/weixin/public/weixin" );
+        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appId."&redirect_uri=".$redirect_uri."&response_type=code&scope=SCOPE&state=123#wechat_redirect";
+        header( 'location:'. $url);
+        //获取微信网页的Access_token;
+        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appId."&secret=".$redirect_uri."&code=".$code."&grant_type=authorization_code";
+        $res       = $this -> http_curl($url, 'get');
+        $access_token=$res['access_token'];
+        $oppenid=$res['openid'];
+        //拉去用户信息
+        $url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$oppenid."&lang=zh_CN ";
+        $data=$this -> http_curl($url, 'get');
+        print_r($data);
            //获取jsapi_ticket
         $url="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$token&type=jsapi";
         $file=file_get_contents($url);
