@@ -67,16 +67,6 @@ class wechatCallbackapiTest
                 $time = time();
                 //获取用户发送消息的类型
                 $msgType  = $postObj->MsgType;
-
-
-
-
-
-
-
-
-
-
                  //定义发送文字消息的接口
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
@@ -137,8 +127,7 @@ class wechatCallbackapiTest
         $file=file_get_contents($url);
         $data=json_decode($file,true);
         $Accesstoken=$data['access_token'];
-        echo $Accesstoken;
-       //return $Accesstoken;
+       return $Accesstoken;
     }
     //创建自定义菜单
 
