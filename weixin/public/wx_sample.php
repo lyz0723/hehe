@@ -44,7 +44,7 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             //header('content-type:text');
         	echo $echoStr;
-            echo $this->getAccesstoken();
+            //echo $this->getAccesstoken();
             echo $this->createMenu();
         	exit;
         }
@@ -137,7 +137,8 @@ class wechatCallbackapiTest
         $file=file_get_contents($url);
         $data=json_decode($file,true);
         $Accesstoken=$data['access_token'];
-       return $Accesstoken;
+        echo $Accesstoken;
+       //return $Accesstoken;
     }
     //创建自定义菜单
 
